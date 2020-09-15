@@ -16,5 +16,13 @@
         }
       }
     }
+  },
+  "auth": {
+    "reactpinpointwebsitecc568d99": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
   }
 }

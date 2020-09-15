@@ -10,6 +10,11 @@
       "StackName": "amplify-reactpinpointwebsite-dev-215232",
       "StackId": "arn:aws:cloudformation:us-east-2:806417543125:stack/amplify-reactpinpointwebsite-dev-215232/1f68a1c0-f6f6-11ea-a74e-06d398e7edd6",
       "AmplifyAppId": "d3can888s5ojx7"
+    },
+    "categories": {
+      "auth": {
+        "reactpinpointwebsitecc568d99": {}
+      }
     }
   }
 }
