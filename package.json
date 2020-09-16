@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
+    "dev": "NODE_ENV=development next dev",
+    "build": "NODE_ENV=production next build && next export",
+    "start": "NODE_ENV=production next start",
     "server-dev": "NODE_ENV=development nodemon server/server.js",
     "server-prod": "NODE_ENV=production node server/server.js"
   },
