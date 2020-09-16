@@ -11,10 +11,9 @@ export default function Home(props) {
         <title>React Pinpoint</title>
       </Head>
       <body>
-        <div className="p-4 bg-white rounded shadow">
-          <h1 className="text-6xl font-semibold leading-normal text-center text-purple-500">React Pinpoint</h1>
-          <p className="text-center text-gray-600">with Tailwind CSS</p>
-          <p className="text-center text-gray-600">LETS GOOOOOO</p>
+        <div className="p-4 bg-warmgrey-100">
+          <h1 className="text-6xl font-semibold leading-normal text-center text-purple-300">React Pinpoint</h1>
+          <h2 className="text-base font-semibold leading-normal text-center text-warmgrey-900">It's just a little prick.</h2>
         </div>
       </body>
     </div>

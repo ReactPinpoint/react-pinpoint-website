@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* COLOR PALETTE 18 */
+/* 
+Primary 
+
+These are the splashes of color that should appear the most in your UI,
+and are the ones that determine the overall "look" of the site. Use these
+for things like primary actions, links, navigation items, icons, accent
+borders, or text you want to emphasize.
+
+Neutrals
+
+These are the colors you will use the most and will make up the majority
+of your UI. Use them for most of your text, backgrounds, and borders,
+as well as for things like secondary buttons and links.
+*/
+
 body {
-  @apply bg-blue-500;
+  @apply bg-warmgrey-100;
 }
