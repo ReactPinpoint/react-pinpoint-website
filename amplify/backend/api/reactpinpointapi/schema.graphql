@@ -1,7 +1,0 @@
-type Project 
-@model 
-@auth(rules: []) {
-  id: ID!
-  name: String!
-  description: String
-}
