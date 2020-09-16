@@ -5,16 +5,21 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "server-dev": "NODE_ENV=development nodemon server/server.js",
+    "server-prod": "NODE_ENV=production node server/server.js"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.20",
     "aws-amplify": "^3.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "nodemon": "^2.0.4",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.8.10"
   }
