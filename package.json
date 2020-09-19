@@ -6,12 +6,13 @@
     "dev": "NODE_ENV=development next dev",
     "build": "NODE_ENV=production next build && next export",
     "start": "NODE_ENV=production next start",
-    "server-dev": "NODE_ENV=development nodemon server/server.js",
+    "server-dev": "NODE_ENV=development concurrently \"nodemon server/server.js\" \"next dev\"",
     "server-prod": "NODE_ENV=production node server/server.js"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.20",
     "aws-amplify": "^3.3.0",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "next": "^9.5.3",
