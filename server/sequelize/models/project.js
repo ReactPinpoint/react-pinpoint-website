@@ -1,6 +1,8 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../index');
 
 class Project extends Model {};
+
 Project.init({
   name: {
     type: DataTypes.STRING,
