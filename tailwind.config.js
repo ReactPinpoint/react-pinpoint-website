@@ -3,7 +3,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ['./src/**/*.js', './pages/**/*.js'],
+  purge: ['./src/**/*.js', './pages/**/*.js', './components/**/*.js'],
   theme: {
     fontFamily: {
       display: ['Gilroy', 'sans-serif'],
