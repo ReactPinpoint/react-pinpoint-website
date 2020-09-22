@@ -12,17 +12,14 @@ const sequelize = new Sequelize(dbname, username, password, {
   ssl: 'Amazon RDS',
 });
 
-// (async () => {
-//   try {
-//     await sequelize.authenticate();
-//     console.log('Connected to DB');
-//     app.listen(PORT, () => {
-//       console.log(`Server running at port ${PORT}`);
-//     })
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// )();
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connected to DB');
+  } catch (error) {
+    console.log(error);
+  }
+}
+)();
 
 module.exports = sequelize;
