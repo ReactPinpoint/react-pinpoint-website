@@ -19,5 +19,6 @@ as well as for things like secondary buttons and links.
 */
 
 body {
-  @apply bg-warmgrey-100;
+  @apply bg-warmgrey-700;
+  @apply box-border;
 }
