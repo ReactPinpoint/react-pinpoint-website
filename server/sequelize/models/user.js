@@ -4,6 +4,17 @@ const sequelize = require('../index');
 
 class User extends Model {};
 
+const hashPassword = async (user) => {
+  try {
+    const hash = await bcrypt.hash(user.password, 10);
+    user.password = hash;
+    return;
+  }
+  catch (err) {
+    return err;
+  }
+};
+
 User.init({
   user_id: {
     type: DataTypes.UUID,
@@ -26,15 +37,7 @@ User.init({
   timestamps: false,
 });
 
-User.beforeCreate(async (user) => {
-  try {
-    const hash = await bcrypt.hash(user.password, 10);
-    user.password = hash;
-    return;
-  }
-  catch (err) {
-    return err;
-  }
-})
+User.beforeCreate(hashPassword);
+User.beforeUpdate(hashPassword);
 
 module.exports = User;
