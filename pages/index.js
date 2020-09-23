@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Nav from '../components/nav';
 import Container from '../components/container';
 import Button from '../components/button';
@@ -20,7 +21,11 @@ export default function Home() {
               React Pinpoint helps developers locate performance bottlenecks on their React components.
             </h2>
             <div className="mt-6">
-              <Button>Get Started</Button>
+              <Button>
+                <Link href="/signup">
+                  <a>Get Started</a>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
