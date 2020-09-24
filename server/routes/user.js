@@ -9,7 +9,7 @@ router.get('/getuser/:username',
   (req, res) => res.status(200).json(res.locals.user)
 );
 
-router.post('/adduser', 
+router.post('/register', 
   userController.addUser,
   (req, res) => res.status(200).json(res.locals.createdUser)
 );
@@ -23,5 +23,10 @@ router.delete('/deleteuser',
   userController.deleteUser,
   (req, res) => res.status(200).json({})
 );
+
+router.post('/login', 
+  userController.login,
+  (req, res) => res.status(200).json(res.locals.loggedIn)
+)
 
 module.exports = router;
