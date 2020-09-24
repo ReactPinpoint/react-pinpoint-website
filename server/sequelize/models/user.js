@@ -9,8 +9,7 @@ const hashPassword = async (user) => {
     const hash = await bcrypt.hash(user.password, 10);
     user.password = hash;
     return;
-  }
-  catch (err) {
+  } catch (err) {
     return err;
   }
 };
@@ -38,6 +37,13 @@ User.init({
 });
 
 User.beforeCreate(hashPassword);
-User.beforeUpdate(hashPassword);
+
+User.prototype.validatePassword = async (password, user) => {
+  try {
+    return await bcrypt.compare(password, user.password);
+  } catch (err) {
+    return err;
+  }
+};
 
 module.exports = User;
