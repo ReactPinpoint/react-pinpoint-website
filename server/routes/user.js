@@ -10,7 +10,7 @@ router.get('/getuser/:username',
 );
 
 router.post('/register', 
-  userController.addUser,
+  userController.register,
   (req, res) => res.status(200).json(res.locals.createdUser)
 );
 
