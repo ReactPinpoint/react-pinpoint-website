@@ -18,7 +18,7 @@ const sequelize = new Sequelize(dbname, username, password, {
     console.log('Connected to DB.');
     if (process.env.NODE_ENV === 'development') {
       console.log(sequelize.models)
-      await sequelize.sync({ force: true });
+      await sequelize.sync();
       console.log('All models synced.');
     }
   } catch (error) {
