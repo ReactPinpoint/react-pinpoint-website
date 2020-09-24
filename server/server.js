@@ -18,7 +18,6 @@ app.use(passport.session());
 const userRouter = require('./routes/user');
 const projectRouter = require('./routes/project');
 const analyticsRouter = require('./routes/analytics');
-const { addHook } = require('./sequelize/models/user');
 app.use('/api/user', userRouter);
 app.use('/api/project', projectRouter);
 app.use('/api/analytics', analyticsRouter);
