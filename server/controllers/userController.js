@@ -1,4 +1,5 @@
 const User = require('../sequelize/models/user');
+const UserProject = require('../sequelize/models/user-projects');
 
 const userController = {};
 
@@ -17,12 +18,12 @@ userController.getUser = async (req, res, next) => {
   }
 }
 
-userController.addUser = async (req, res, next) => {
+userController.register = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.create({ username, password })
-    //TODO write logic to hide user password before response
     res.locals.createdUser = user;
+    // TODO start a session
     next();
   } catch (err) {
     next(err);
@@ -31,7 +32,7 @@ userController.addUser = async (req, res, next) => {
 
 userController.updateUser = async (req, res, next) => {
   try {
-    //TODO write logic to update user in database
+    // TODO write logic to update user in database
     next();
   } catch (err) {
     next(err);
@@ -42,6 +43,30 @@ userController.deleteUser = async (req, res, next) => {
   // this just deletes all users for now
   try {
     User.destroy({ where: {} });
+    next();
+  } catch (err) {
+    next(err);
+  }
+}
+
+userController.login = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      res.locals.loggedIn = { loggedIn: false };
+      return next();
+    }
+    const user = await User.findOne({
+      where: {
+        username,
+      }
+    })
+    if (!user) {
+      res.locals.loggedIn = { loggedIn: false };
+      return next();
+    }
+    const validated = await user.validatePassword(password, user);
+    res.locals.loggedIn = { loggedIn: validated };
     next();
   } catch (err) {
     next(err);

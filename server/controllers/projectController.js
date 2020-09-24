@@ -1,10 +1,11 @@
 const Project = require('../sequelize/models/project');
+const UserProject = require('../sequelize/models/user-projects');
 
 const projectController = {};
 
 projectController.getProject = async (req, res, next) => {
   try {
-    //TODO write logic to fetch project from DB
+    // TODO write logic to fetch project from DB
     const project = await Project.findAll();
     res.locals.project = project;
     next();
@@ -26,7 +27,7 @@ projectController.addProject = async (req, res, next) => {
 
 projectController.updateProject = async (req, res, next) => {
   try {
-    //TODO write logic to update project in DB
+    // TODO write logic to update project in DB
     next();
   } catch (err) {
     next(err);
