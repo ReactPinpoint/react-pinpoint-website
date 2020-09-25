@@ -1,12 +1,11 @@
 const User = require('../sequelize/models/user');
 const jwt = require('jsonwebtoken');
 
-const invalidate = () => {
-  res.locals.loggedIn = { loggedIn: false };
-  res.clearCookie('token');
-}
-
 const login = async (req, res, next) => {
+  const invalidate = () => {
+    res.locals.loggedIn = { loggedIn: false };
+    res.clearCookie('token');
+  }
   try {
     const { username, password } = req.body;
     if (!username || !password) {
