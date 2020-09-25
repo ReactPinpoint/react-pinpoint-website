@@ -1,6 +1,9 @@
+const User = require('../sequelize/models/user');
+
 const register = async (req, res, next) => {
   try {
     const { username, password } = req.body;
+    if (!username || !password) return next('Invalid input.');
     const results = await User.findAll({ where: { username }});
     if (results.length) {
       res.locals.newUser = { err: 'User exists'};
