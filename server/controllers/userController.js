@@ -22,4 +22,14 @@ userController.getUsers = async (req, res, next) => {
   }
 }
 
+userController.dropUsers = async (req, res, next) => {
+   // this just deletes all users for now	
+   try {	
+    User.destroy({ where: {} });	
+    next();	
+  } catch (err) {	
+    next(err);	
+  }
+}
+
 module.exports = userController;
