@@ -20,23 +20,17 @@ app.use('/api/user', isAuthorized, userRouter);
 app.use('/api/project', isAuthorized, projectRouter);
 app.use('/api/analytics', isAuthorized, analyticsRouter);
 
-app.post('/api/login',
-  login,
-  (req, res) => {
-    res.json(res.locals.loggedIn)
-  });
+app.post('/api/login', login, (req, res) => {
+  res.json(res.locals.loggedIn);
+});
 
-app.post('/api/register',
-  register,
-  (req, res) => {
-    res.json(res.locals.newUser)
-  });
+app.post('/api/register', register, (req, res) => {
+  res.json(res.locals.newUser);
+});
 
-app.get('/', 
-  isAuthorized,
-  (req, res) => {
-    res.send('Welcome to reactpp API');
-  });
+app.get('/', isAuthorized, (req, res) => {
+  res.send('Welcome to reactpp API');
+});
 
 // global error handler
 app.use((err, req, res, next) => {
@@ -50,4 +44,4 @@ app.use((err, req, res, next) => {
 // run the server
 app.listen(PORT, () => {
   console.log(`Server running at port ${PORT}`);
-})
+});
