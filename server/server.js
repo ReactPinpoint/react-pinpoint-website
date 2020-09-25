@@ -1,32 +1,42 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const passport = require('passport');
-const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const isAuthorized = require('./auth/auth');
-
 app.use(express.json({ extended: false }));
-app.use(session({ secret: process.env.SECRET }))
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(cookieParser());
 
+const isAuthorized = require('./auth/auth');
+const login = require('./auth/login');
+const register = require('./auth/register');
 const userRouter = require('./routes/user');
 const projectRouter = require('./routes/project');
 const analyticsRouter = require('./routes/analytics');
-app.use('/api/user', userRouter);
-app.use('/api/project', projectRouter);
-app.use('/api/analytics', analyticsRouter);
+app.use('/api/user', isAuthorized, userRouter);
+app.use('/api/project', isAuthorized, projectRouter);
+app.use('/api/analytics', isAuthorized, analyticsRouter);
+
+app.post('/api/login',
+  login,
+  (req, res) => {
+    res.json(res.locals.loggedIn)
+  });
+
+app.post('/api/register',
+  register,
+  (req, res) => {
+    res.json(res.locals.newUser)
+  });
 
 app.get('/', 
   isAuthorized,
   (req, res) => {
-  res.send('Welcome to reactpp API');
-});
+    res.send('Welcome to reactpp API');
+  });
 
 // global error handler
 app.use((err, req, res, next) => {
