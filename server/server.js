@@ -15,10 +15,10 @@ const login = require('./auth/login');
 const register = require('./auth/register');
 const userRouter = require('./routes/user');
 const projectRouter = require('./routes/project');
-const analyticsRouter = require('./routes/analytics');
+const commitRouter = require('./routes/commit');
 app.use('/api/user', isAuthorized, userRouter);
 app.use('/api/project', isAuthorized, projectRouter);
-app.use('/api/analytics', isAuthorized, analyticsRouter);
+app.use('/api/commit', isAuthorized, commitRouter);
 
 app.post('/api/login', login, (req, res) => {
   res.json(res.locals.loggedIn);
