@@ -1,13 +1,13 @@
-const Project = require('../sequelize/models/project');
-const UserProject = require('../sequelize/models/user-projects');
+const { User, Project } = require('../sequelize/models');
 
 const projectController = {};
 
 projectController.getProject = async (req, res, next) => {
   try {
-    // TODO write logic to fetch project from DB
-    const project = await Project.findAll();
-    res.locals.project = project;
+    const user = await User.findByPk(res.locals.user_id, { include: Project });
+    if (!user) return({ err: 'User not found.'});
+    const { projects } = user;
+    res.locals.projects = projects;
     next();
   } catch (err) {
     next(err);
@@ -17,7 +17,11 @@ projectController.getProject = async (req, res, next) => {
 projectController.addProject = async (req, res, next) => {
   try {
     const { name, description } = req.body;
-    const project = await Project.create({ name, description });
+    const project = await Project.create({ 
+      name, 
+      description,
+    });
+    project.setUser(res.locals.user_id);
     res.locals.createdProject = project;
     next();
   } catch (err) {
