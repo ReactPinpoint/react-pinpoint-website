@@ -3,22 +3,22 @@ const projectController = require('../controllers/projectController');
 
 const router = express.Router();
 
-router.get('/getproject',
+router.get('/',
   projectController.getProject,
-  (req, res) => res.status(200).json(res.locals.project)
+  (req, res) => res.status(200).json(res.locals.projects)
 );
 
-router.post('/addproject',
+router.post('/',
   projectController.addProject,
   (req, res) => res.status(200).json(res.locals.createdProject)
 );
 
-router.put('/updateproject',
+router.put('/',
   projectController.updateProject,
   (req, res) => res.status(200).json({})
 );
 
-router.delete('/deleteproject',
+router.delete('/',
   projectController.deleteProject,
   (req, res) => res.status(200).json({})
 );
