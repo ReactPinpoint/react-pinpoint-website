@@ -12,7 +12,7 @@ export default function SignUp() {
     console.log('data.password ->', data.password);
     console.log('Submitting the form!');
 
-    fetch('/api/user', {
+    fetch('http://api.reactpp.com/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
