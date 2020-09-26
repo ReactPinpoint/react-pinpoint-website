@@ -1,4 +1,4 @@
-const User = require('../sequelize/models/user');
+const { User } = require('../sequelize/models');
 
 const userController = {};
 
@@ -20,6 +20,16 @@ userController.getUsers = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+}
+
+userController.dropUser = async (req, res, next) => {
+  // this just deletes all users for now	
+  try {	
+   User.destroy({ where: { where: { user_id: res.locals.user_id } } });	
+   next();	
+ } catch (err) {	
+   next(err);	
+ }
 }
 
 userController.dropUsers = async (req, res, next) => {
