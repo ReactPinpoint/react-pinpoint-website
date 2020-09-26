@@ -1,4 +1,4 @@
-const User = require('../sequelize/models/user');
+const { User } = require('../sequelize/models');
 
 const register = async (req, res, next) => {
   try {

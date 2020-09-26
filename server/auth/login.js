@@ -1,4 +1,4 @@
-const User = require('../sequelize/models/user');
+const { User } = require('../sequelize/models');
 const jwt = require('jsonwebtoken');
 
 const login = async (req, res, next) => {
