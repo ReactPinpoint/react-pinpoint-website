@@ -26,6 +26,11 @@ export default function Home() {
                   <Button>Get Started </Button>
                 </a>
               </Link>
+              <Link href="/dashboard">
+                <a>
+                  <Button>To the Dashboard </Button>
+                </a>
+              </Link>
             </div>
           </div>
         </div>

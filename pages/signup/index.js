@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 export default function SignUp() {
   const { register, handleSubmit, watch, errors } = useForm();
+  const { exists, }
   const router = useRouter();
 
   const onSubmit = (data) => {
@@ -29,9 +30,8 @@ export default function SignUp() {
           console.log(data.message);
         }
 
-        if (data && data.token) {
-          // Set cookie
-          cookie.set('token', data.token, { expires: 2 });
+        if (data) {
+          // Redirect user back to home
           router.push('/');
         }
       })
