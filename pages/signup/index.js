@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 export default function SignUp() {
   const { register, handleSubmit, watch, errors } = useForm();
-  const { exists, }
-  const router = useRouter();
 
   const onSubmit = (data) => {
     console.log('data ->', data);
