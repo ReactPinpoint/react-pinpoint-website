@@ -40,7 +40,7 @@ export default function Dashboard() {
   const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
   return (
     <>
-      <Nav />
+      <Nav loggedIn="true"></Nav>
       <div className="flex flex-col items-center">
         <h2>Dashboard</h2>
         <div className="flex flex-col items-start">
