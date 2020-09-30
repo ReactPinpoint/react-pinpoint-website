@@ -2,12 +2,12 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const Project = ({ project }) => {
-  const { name, description } = project;
+  const { name, description, project_id } = project;
   return (
     <div className="flex flex-col justify-start items-start">
       <h3>{name}</h3>
       <p>{description}</p>
-      <Link href="/project">
+      <Link href={`/dashboard/projects/${project_id}`}>
           <a className="text-blue-500 underline">View Project</a>
       </Link>
     </div>
@@ -25,6 +25,7 @@ export default function Dashboard() {
           credentials: 'include',
         });
         const data = await resp.json();
+        console.log(data)
         if (data.length) {
           setLoaded(true);
           setProjects(data);
