@@ -13,7 +13,7 @@ export default function Nav() {
             <title>Menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
-        </button>
+        </button> 
       </div>
       <div className="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">

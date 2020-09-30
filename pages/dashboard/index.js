@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-import Nav from '../../components/nav';
+import Nav from '../../components/Nav';
 
 const Project = ({ project }) => {
   const { name, description, project_id } = project;
