@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Nav from '../components/nav';
-import Container from '../components/container';
-import Button from '../components/button';
+import Nav from '../components/nav.js';
+import Container from '../components/container.js';
+import Button from '../components/button.js';
 
 export default function Home() {
   return (

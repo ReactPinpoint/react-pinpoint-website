@@ -20,10 +20,10 @@ export default function Login() {
       });
       const result = await resp.json();
       if (result.loggedIn) router.push('/dashboard');
-    } catch(err) {
+    } catch (err) {
       console.log('error -> ', err.message);
     }
-  }
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-warmgrey-100 ">
       <Link href="/">
@@ -35,23 +35,25 @@ export default function Login() {
           <label htmlFor="email" className="mt-6">
             Email
           </label>
-          <input 
+          <input
             ref={register({
               required: 'Email is required',
             })}
             name="username"
             id="email"
             type="email"
-            className="block w-full p-2 mb-4 border rounded border-grey-light" />
+            className="block w-full p-2 mb-4 border rounded border-grey-light"
+          />
           <label htmlFor="password">Password</label>
-          <input 
+          <input
             ref={register({
-              required: 'Email is required',
+              required: 'Password is required',
             })}
             name="password"
-            id="password" 
-            type="password" 
-            className="block w-full p-2 mb-4 border rounded border-grey-light" />
+            id="password"
+            type="password"
+            className="block w-full p-2 mb-4 border rounded border-grey-light"
+          />
           <button type="submit" className="w-full py-3 my-1 text-center text-white bg-purple-400 rounded hover:bg-purple-300 focus:outline-none">
             Continue
           </button>

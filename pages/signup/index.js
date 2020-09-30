@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 export default function SignUp() {
   const router = useRouter();
   const { register, handleSubmit, watch, errors } = useForm();
+  const [existingUserError, setExistingUserError] = useState('');
+  const [miscError, setMiscError] = useState('');
 
   const onSubmit = (data) => {
     console.log('data ->', data);
@@ -25,17 +28,15 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         console.log('data in result ->', data);
-        if (data && data.error) {
-          console.log(data.message);
-        }
-
-        if (data) {
-          // Redirect user back to home
+        if (data && data.err) {
+          setExistingUserError(data.err);
+        } else if (data) {
+          // Redirect user to dashboard
           router.push('/dashboard');
         }
       })
       .catch((err) => {
-        console.log('error -> ', err.message);
+        setMiscError(err.message);
       });
   };
 
@@ -63,6 +64,7 @@ export default function SignUp() {
               className="block w-full p-2 mt-1 border rounded border-grey-light"
             />
             <p className="text-red-600">{errors.username && errors.username.message}</p>
+            <p className="text-red-600">{existingUserError}</p>
           </div>
 
           <div className="mb-4">
@@ -97,6 +99,7 @@ export default function SignUp() {
           <button type="submit" className="w-full py-3 my-1 text-center text-white bg-purple-400 rounded hover:bg-purple-300 focus:outline-none">
             Create Account
           </button>
+          <p className="mt-2 text-red-600">{miscError}</p>
         </form>
       </div>
       <p className="mt-4">
