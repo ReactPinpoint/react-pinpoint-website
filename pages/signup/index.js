@@ -15,7 +15,7 @@ export default function SignUp() {
     console.log('data.password ->', data.password);
     console.log('Submitting the form!');
 
-    fetch('http://api.reactpp.com/api/register', {
+    fetch('https://react-pinpoint-api.herokuapp.com/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
