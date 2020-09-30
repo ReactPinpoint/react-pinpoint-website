@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 export default function SignUp() {
+  const router = useRouter();
   const { register, handleSubmit, watch, errors } = useForm();
 
   const onSubmit = (data) => {
@@ -29,7 +31,7 @@ export default function SignUp() {
 
         if (data) {
           // Redirect user back to home
-          router.push('/');
+          router.push('/dashboard');
         }
       })
       .catch((err) => {
