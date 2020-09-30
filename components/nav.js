@@ -1,4 +1,5 @@
-export default function Nav() {
+export default function Nav({ ...props }) {
+  const { loggedIn } = props || false;
   return (
     <nav className="flex flex-wrap items-center justify-between px-64 py-6 bg-purple-500">
       <div className="flex items-center flex-shrink-0 mr-6 text-warmgrey-100">
@@ -27,14 +28,16 @@ export default function Nav() {
             Taie
           </a>
         </div>
-        <div>
-          <a
-            href="#"
-            className="inline-block px-4 py-2 mt-4 text-sm leading-none border rounded text-warmgrey-100 border-warmgrey-100 hover:border-transparent hover:text-purple-500 hover:bg-warmgrey-100 lg:mt-0"
-          >
-            Download
-          </a>
-        </div>
+        {loggedIn && (
+          <div>
+            <a
+              href="#"
+              className="inline-block px-4 py-2 mt-4 text-sm leading-none border rounded text-warmgrey-100 border-warmgrey-100 hover:border-transparent hover:text-purple-500 hover:bg-warmgrey-100 lg:mt-0"
+            >
+              Sign out
+            </a>
+          </div>
+        )}
       </div>
     </nav>
   );
