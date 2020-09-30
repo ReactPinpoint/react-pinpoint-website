@@ -28,9 +28,9 @@ export default function Home() {
               </Link>
             </div>
             <div className="mt-6">
-              <Link href="/dashboard">
+              <Link href="/login">
                 <a>
-                  <Button>To the Dashboard </Button>
+                  <Button>Login </Button>
                 </a>
               </Link>
             </div>

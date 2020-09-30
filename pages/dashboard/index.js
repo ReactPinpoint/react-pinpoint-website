@@ -22,7 +22,8 @@ export default function Dashboard() {
   useEffect(() => {
     (async () => {
       try {
-        const resp = await fetch('https://react-pinpoint-api.herokuapp.com/api/project', {
+        const apiServer = process.env.NODE_ENV === 'production' ? "https://react-pinpoint-api.herokuapp.com" : "http://localhost:5000";
+        const resp = await fetch(`${apiServer}/api/project`, {
           method: 'GET',
           credentials: 'include',
         });

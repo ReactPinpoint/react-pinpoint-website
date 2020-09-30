@@ -1,5 +1,22 @@
+import { Router, useRouter } from 'next/router';
+
 export default function Nav({ ...props }) {
+  const router = useRouter();
   const { loggedIn } = props || false;
+  const handleLogout = async() => {
+    try {
+      const apiServer = process.env.NODE_ENV === 'production' ? "https://react-pinpoint-api.herokuapp.com" : "http://localhost:5000";
+      const resp = await fetch(`${apiServer}/api/logout`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+      const data = await resp.json();
+      // console.log(data)
+      if (data.loggedOut) router.push('/');
+    } catch(err) {
+      console.log(err);
+    } 
+  }
   return (
     <nav className="flex flex-wrap items-center justify-between px-64 py-6 bg-purple-500">
       <div className="flex items-center flex-shrink-0 mr-6 text-warmgrey-100">
@@ -33,6 +50,7 @@ export default function Nav({ ...props }) {
             <a
               href="#"
               className="inline-block px-4 py-2 mt-4 text-sm leading-none border rounded text-warmgrey-100 border-warmgrey-100 hover:border-transparent hover:text-purple-500 hover:bg-warmgrey-100 lg:mt-0"
+              onClick={handleLogout}
             >
               Sign out
             </a>
