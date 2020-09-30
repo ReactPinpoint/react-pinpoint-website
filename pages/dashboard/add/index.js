@@ -7,7 +7,7 @@ export default function Add() {
   const router = useRouter();
   const onSubmit = async (data) => {
     try {
-      const resp = await fetch('https://api.reactpp.com/api/project', {
+      const resp = await fetch('https://react-pinpoint-api.herokuapp.com/api/project', {
         method: 'POST',
         credentials: 'include',
         headers: {

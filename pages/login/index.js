@@ -7,7 +7,7 @@ export default function Login() {
   const router = useRouter();
   const onSubmit = async (data) => {
     try {
-      const resp = await fetch('https://api.reactpp.com/api/login', {
+      const resp = await fetch('https://react-pinpoint-api.herokuapp.com/api/login', {
         method: 'POST',
         credentials: 'include',
         headers: {

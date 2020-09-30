@@ -19,7 +19,7 @@ export default function Project() {
   useEffect(() => {
     const request = async() => {
       try {
-        const resp = await fetch(`https://api.reactpp.com/api/commit/${id}`, {
+        const resp = await fetch(`https://react-pinpoint-api.herokuapp.com/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
         });
