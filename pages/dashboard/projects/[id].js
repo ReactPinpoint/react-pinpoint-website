@@ -17,14 +17,13 @@ export default function Project() {
   const [commits, setCommits] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    (async() => {
+    const request = async() => {
       try {
-        const resp = await fetch(`https://react-pinpoint-api.herokuapp.com/api/commit/${id}`, {
+        const resp = await fetch(`https://api.reactpp.com/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
         });
         const data = await resp.json();
-        console.log(data)
         if (data.length) {
           setLoaded(true);
           setCommits(data);
@@ -33,8 +32,8 @@ export default function Project() {
         console.log(err);
       }
     }
-    )(); 
-  })
+    if (id) request();
+  }, [loaded, id])
   const commitsList = commits.map((commit, i) => <Commit key={`Commit${i}`} commit={commit} />)
   return(
     <div className="flex flex-col items-center">

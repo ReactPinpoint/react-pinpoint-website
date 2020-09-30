@@ -6,9 +6,8 @@ export default function Login() {
   const { register, handleSubmit, watch, errors } = useForm();
   const router = useRouter();
   const onSubmit = async (data) => {
-    console.log(data)
     try {
-      const resp = await fetch('https://react-pinpoint-api.herokuapp.com/api/login', {
+      const resp = await fetch('https://api.reactpp.com/api/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -20,7 +19,6 @@ export default function Login() {
         }),
       });
       const result = await resp.json();
-      console.log(result)
       if (result.loggedIn) router.push('/dashboard');
     } catch(err) {
       console.log('error -> ', err.message);
