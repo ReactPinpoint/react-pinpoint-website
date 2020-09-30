@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-import Nav from '../../components/nav';
+import Nav from 'components/nav';
 
 const Project = ({ project }) => {
   const { name, description, project_id } = project;
   return (
-    <div className="flex flex-col justify-start items-start">
+    <div className="flex flex-col items-start justify-start">
       <h3>{name}</h3>
       <p>{description}</p>
       <Link href={`/dashboard/projects/${project_id}`}>
-          <a className="text-blue-500 underline">View Project</a>
+        <a className="text-blue-500 underline">View Project</a>
       </Link>
     </div>
-  )
+  );
 };
 
 export default function Dashboard() {
@@ -37,19 +37,19 @@ export default function Dashboard() {
     })();
   }, [loaded]);
 
-  const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />)
+  const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
   return (
     <>
-    <Nav />
-    <div className="flex flex-col items-center">
-      <h2>Dashboard</h2>
-      <div className="flex flex-col items-start">
-        {loaded && projectsList}
-        <Link href="/dashboard/add">
-          <a className="text-blue-500 underline">Add a Project</a>
-        </Link>
+      <Nav />
+      <div className="flex flex-col items-center">
+        <h2>Dashboard</h2>
+        <div className="flex flex-col items-start">
+          {loaded && projectsList}
+          <Link href="/dashboard/add">
+            <a className="text-blue-500 underline">Add a Project</a>
+          </Link>
+        </div>
       </div>
-    </div>
     </>
   );
 }
