@@ -12,56 +12,44 @@ export default function Nav({ ...props }) {
         credentials: 'include',
       });
       const data = await resp.json();
-      // console.log(data)
       if (data.loggedOut) router.push('/');
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <nav className="flex flex-wrap items-center justify-between px-64 py-6 bg-primary-100">
+    <nav className="flex flex-col items-center justify-between py-4 md:px-64 lg:flex-row bg-primary-100">
       <div className="flex items-center flex-shrink-0 mr-6 text-neutral-1000">
         <svg className="w-8 h-8 mr-2 fill-current" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
           <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
         </svg>
         <Link href={loggedIn ? '/dashboard' : '/'}>
-          <a className="text-xl font-semibold tracking-tight cursor-pointer">React Pinpoint</a>
+          <a className="text-4xl font-semibold tracking-tight cursor-pointer md:text-2xl">React Pinpoint</a>
         </Link>
       </div>
-      <div className="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
-        <div className="text-sm lg:flex-grow">
-          <a href="#responsive-header" className="block mt-4 mr-4 text-primary-600 lg:inline-block lg:mt-0 hover:text-primary-500">
-            Robbie
+
+      {!loggedIn && (
+        <Link href="/login">
+          <a
+            href="#"
+            className="inline-block w-2/4 max-w-md px-4 py-4 mt-4 text-sm leading-none text-center border rounded lg:py-2 lg:rounded-full lg:w-auto lg:mr-24 text-neutral-100 bg-primary-600 border-primary-600 hover:border-transparent hover:text-neutral-100 hover:bg-primary-500 lg:mt-0"
+          >
+            Sign in
           </a>
-          <a href="#responsive-header" className="block mt-4 mr-4 text-primary-600 lg:inline-block lg:mt-0 hover:text-primary-500">
-            Jeffie
-          </a>
-          <a href="#responsive-header" className="block mt-4 text-primary-600 lg:inline-block lg:mt-0 hover:text-primary-500">
-            Taie
+        </Link>
+      )}
+
+      {loggedIn && (
+        <div>
+          <a
+            href="#"
+            className="inline-block px-4 py-2 mt-4 text-sm leading-none border rounded text-neutral-100 border-neutral-100 hover:border-transparent hover:text-primary-500 hover:bg-neutral-100 lg:mt-0"
+            onClick={handleLogout}
+          >
+            Sign out
           </a>
         </div>
-        {loggedIn && (
-          <div>
-            <a
-              href="#"
-              className="inline-block px-4 py-2 mt-4 text-sm leading-none border rounded text-neutral-100 border-neutral-100 hover:border-transparent hover:text-primary-500 hover:bg-neutral-100 lg:mt-0"
-              onClick={handleLogout}
-            >
-              Sign out
-            </a>
-          </div>
-        )}
-        {!loggedIn && (
-          <Link href="/login">
-            <a
-              href="#"
-              className="inline-block px-4 py-2 mt-4 mr-24 text-sm leading-none border rounded-full text-neutral-100 bg-primary-600 border-primary-600 hover:border-transparent hover:text-neutral-100 hover:bg-primary-500 lg:mt-0"
-            >
-              Sign in
-            </a>
-          </Link>
-        )}
-      </div>
+      )}
     </nav>
   );
 }

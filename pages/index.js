@@ -14,8 +14,9 @@ export default function Home() {
       </Head>
       <div>
         <Nav></Nav>
-        <div className="py-16 pl-64 bg-primary-100">
-          <div className="max-w-xs">
+
+        <div className="flex py-16 justify-evenly bg-primary-100">
+          <div className="max-w-xs pt-24">
             <h1 className="text-4xl font-semibold leading-tight text-primary-1000">Testing smarts for React applications</h1>
             <h2 className="pt-4 text-base leading-normal text-primary-600">
               React Pinpoint helps developers locate performance bottlenecks on their React components.
@@ -27,6 +28,9 @@ export default function Home() {
                 </a>
               </Link>
             </div>
+          </div>
+          <div className="">
+            <img className="object-scale-down w-full h-full max-w-lg max-h-lg sm:hidden" src="/hero-image.png" alt="React" />
           </div>
         </div>
       </div>
