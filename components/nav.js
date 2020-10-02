@@ -51,6 +51,16 @@ export default function Nav({ ...props }) {
             </a>
           </div>
         )}
+        {!loggedIn && (
+          <Link href="/login">
+            <a
+              href="#"
+              className="inline-block px-4 py-2 mt-4 mr-24 text-sm leading-none border rounded-full text-neutral-100 bg-primary-600 border-primary-600 hover:border-transparent hover:text-neutral-100 hover:bg-primary-500 lg:mt-0"
+            >
+              Sign in
+            </a>
+          </Link>
+        )}
       </div>
     </nav>
   );
