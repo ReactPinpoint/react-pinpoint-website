@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
 import Nav from '../../../components/nav';
+import Tree from '../../../components/tree';
 
 const Commit = ({ commit }) => {
   const { 
@@ -33,6 +34,30 @@ const Change = ({ change }) => {
     </div>
   )
 }
+
+const myTreeData = [
+  {
+    name: 'root',
+    attributes: {
+      keyA: 'val A',
+      keyB: 'val B',
+      keyC: 'val C',
+    },
+    children: [
+      {
+        name: 'Level 2: A',
+        attributes: {
+          keyA: 'val A',
+          keyB: 'val B',
+          keyC: 'val C',
+        },
+      },
+      {
+        name: 'Level 2: B',
+      },
+    ],
+  },
+];
 
 export default function Project() {
   const router = useRouter();
@@ -69,6 +94,7 @@ export default function Project() {
       <div>
         {loaded && changesList}
       </div>
+      <Tree treeData={myTreeData} />
     </div>
     </>
   );
