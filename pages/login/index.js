@@ -44,7 +44,7 @@ export default function Login() {
       </Link>
       <div className="w-full max-w-md p-12 bg-white rounded shadow-md text-neutral-1000">
         <h1 className="flex flex-row mb-4 text-xl font-light text-center">Sign in to your account</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col" noValidate>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col text-sm" noValidate>
           <div className="mt-2 mb-4">
             <label className="text-sm" htmlFor="email">
               Email
@@ -58,7 +58,7 @@ export default function Login() {
               type="email"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
             />
-            <p className="text-sm text-red-600">{errors.username && errors.username.message}</p>
+            <p className="text-xs text-red-600">{errors.username && errors.username.message}</p>
           </div>
 
           <div className="mt-4 mb-8">
@@ -74,19 +74,19 @@ export default function Login() {
               type="password"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
             />
-            <p className="text-sm text-red-600 ">{errors.password && errors.password.message}</p>
-            <p className="text-sm text-red-600">{passwordError}</p>
+            <p className="text-xs text-red-600 ">{errors.password && errors.password.message}</p>
+            <p className="text-xs text-red-600">{passwordError}</p>
           </div>
           <button type="submit" className="w-full py-3 my-1 text-center text-white rounded bg-primary-1000 hover:bg-primary-900 focus:outline-none">
             Continue
           </button>
-          <p className="mt-2 text-red-600">{miscError}</p>
+          <p className="mt-2 text-xs text-red-600">{miscError}</p>
         </form>
       </div>
       <p className="mt-8 text-sm text-primary-1000">
         Don't have an account?{' '}
         <Link href="/signup">
-          <a className="font-light text-primary-600 hover:text-primary-1000">Sign Up</a>
+          <a className="font-medium text-primary-600 hover:text-primary-1000">Sign Up</a>
         </Link>
       </p>
     </div>
