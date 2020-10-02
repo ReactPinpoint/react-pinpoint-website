@@ -20,4 +20,5 @@ as well as for things like secondary buttons and links.
 
 body {
   @apply box-border;
+  @apply bg-neutral-100;
 }
