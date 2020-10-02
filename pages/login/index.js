@@ -11,7 +11,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const apiServer = process.env.NODE_ENV === 'production' ? "https://react-pinpoint-api.herokuapp.com" : "http://localhost:5000";
+      const apiServer = process.env.NODE_ENV === 'production' ? 'https://react-pinpoint-api.herokuapp.com' : 'http://localhost:5000';
       const resp = await fetch(`${apiServer}/api/login`, {
         method: 'POST',
         credentials: 'include',
@@ -34,7 +34,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-warmgrey-100 ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 ">
       <Link href="/">
         <a className="mb-4">React Pinpoint Logo Goes Here</a>
       </Link>

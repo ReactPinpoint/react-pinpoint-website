@@ -42,7 +42,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-warmgrey-100 ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 ">
       <Link href="/">
         <a className="mb-4">React Pinpoint Logo Goes </a>
       </Link>
