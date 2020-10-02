@@ -97,7 +97,7 @@ export default function SignUp() {
             <p className="text-red-600">{errors.confirmPassword && errors.confirmPassword.message}</p>
           </div>
 
-          <button type="submit" className="w-full py-3 my-1 text-center text-white bg-purple-400 rounded hover:bg-purple-300 focus:outline-none">
+          <button type="submit" className="w-full py-3 my-1 text-center text-white bg-primary-1000 rounded hover:bg-primary-900 focus:outline-none">
             Create Account
           </button>
           <p className="mt-2 text-red-600">{miscError}</p>
