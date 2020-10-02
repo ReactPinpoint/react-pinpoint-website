@@ -1,4 +1,4 @@
-import canUseDom from '../utils/can-use-dom';
+import canUseDOM from '../utils/can-use-dom';
 if (canUseDOM()) {
   const ReactD3Tree = require('react-d3-tree');
   Tree = ReactD3Tree.default;
