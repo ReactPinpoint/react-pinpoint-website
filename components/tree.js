@@ -5,7 +5,7 @@ if (canUseDOM()) {
 }
 
 export default function TreeComponent({ ...treeData }) {
-  if (!canUseDom()) return null;
+  if (!canUseDOM()) return null;
 
   return <Tree data={treeData} orientation="vertical" />;
 }
