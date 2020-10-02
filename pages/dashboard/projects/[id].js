@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
+import Nav from '../../../components/nav';
+
 const Commit = ({ commit }) => {
   const { 
     component_id, 
@@ -34,7 +36,7 @@ const Change = ({ change }) => {
 
 export default function Project() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, name } = router.query;
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -59,11 +61,15 @@ export default function Project() {
   }, [loaded, id])
   const changesList = changes.map((change, i) => <Change key={`Change${i}`} change={change} />)
   return(
+    <>
+    <Nav loggedIn="true"></Nav>
     <div className="flex flex-col items-center">
-      <h1>This is project {id}</h1>
+      <h1 className="text-2xl p-5">{name}</h1>
+      <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
       <div>
         {loaded && changesList}
       </div>
     </div>
+    </>
   );
 }
