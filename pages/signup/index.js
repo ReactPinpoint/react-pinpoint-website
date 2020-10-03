@@ -29,8 +29,8 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         console.log('data in result ->', data);
-        if (data && data.err) {
-          setExistingUserError(data.err);
+        if (data && data.error) {
+          setExistingUserError(data.error);
         } else if (data) {
           // Redirect user to dashboard
           router.push('/dashboard');
