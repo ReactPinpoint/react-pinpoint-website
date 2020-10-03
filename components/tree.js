@@ -1,11 +1,9 @@
 import canUseDOM from '../utils/can-use-dom';
-if (canUseDOM()) {
-  const ReactD3Tree = require('react-d3-tree');
-  Tree = ReactD3Tree.default;
-}
+import Tree from 'react-d3-tree';
 
-export default function TreeComponent({ ...treeData }) {
-  if (!canUseDOM()) return null;
+export default function TreeComponent({ treeData }) {
 
-  return <Tree data={treeData} orientation="vertical" />;
+  return (
+    <Tree data={treeData} orientation="vertical" />
+  );
 }

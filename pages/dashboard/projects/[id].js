@@ -1,8 +1,13 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic'
 
 import Nav from '../../../components/nav';
-import Tree from '../../../components/tree';
+const Tree = dynamic(
+  () => import('../../../components/tree'),
+  { ssr: false }
+)
+
 
 const Commit = ({ commit }) => {
   const { 
@@ -54,6 +59,11 @@ const myTreeData = [
       },
       {
         name: 'Level 2: B',
+        attributes: {
+          keyA: 'val A',
+          keyB: 'val B',
+          keyC: 'val C',
+        },
       },
     ],
   },
@@ -94,7 +104,9 @@ export default function Project() {
       <div>
         {loaded && changesList}
       </div>
-      <Tree treeData={myTreeData} />
+      <div className="w-screen h-screen bg-gray-500">
+        <Tree treeData={myTreeData} />
+      </div>
     </div>
     </>
   );
