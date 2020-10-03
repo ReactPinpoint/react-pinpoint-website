@@ -57,10 +57,10 @@ export default function SignUp() {
             <label htmlFor="email">Email</label>
             <input
               ref={register({
-                required: 'Email is required',
+                required: 'Email is required.',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Please enter a valid email',
+                  message: 'Please enter a valid email.',
                 },
               })}
               name="username"
@@ -76,7 +76,7 @@ export default function SignUp() {
             <label htmlFor="password">Password</label>
             <input
               ref={register({
-                required: 'Password is required',
+                required: 'Password is required.',
               })}
               name="password"
               id="password"
@@ -90,8 +90,8 @@ export default function SignUp() {
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               ref={register({
-                required: 'Password is required',
-                validate: (value) => value === watch('password') || 'Passwords must match',
+                required: 'Password is required.',
+                validate: (value) => value === watch('password') || 'Passwords must match.',
               })}
               name="confirmPassword"
               id="confirmPassword"

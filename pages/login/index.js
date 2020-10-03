@@ -27,7 +27,7 @@ export default function Login() {
       if (result.loggedIn) {
         router.push('/dashboard');
       } else {
-        setPasswordError('The email or password you entered is invalid');
+        setPasswordError('The email or password you entered is invalid.');
       }
     } catch (err) {
       setMiscError(err.message);
@@ -51,7 +51,7 @@ export default function Login() {
             </label>
             <input
               ref={register({
-                required: 'Email is required',
+                required: 'Email is required.',
               })}
               name="username"
               id="email"
@@ -67,7 +67,7 @@ export default function Login() {
             </label>
             <input
               ref={register({
-                required: 'Password is required',
+                required: 'Password is required.',
               })}
               name="password"
               id="password"
