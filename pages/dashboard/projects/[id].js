@@ -13,8 +13,9 @@ const Commit = ({ commit }) => {
       <p>Component name: {component_name}</p>
       <p>Self base duration: {self_base_duration}</p>
       <p>Parent component id: {parent_component_id}</p>
-      <p>Component state: {component_state}</p>
+      <p>Component state: {JSON.stringify(component_state)}</p>
       <p>Sibling component id: {sibling_component_id}</p>
+      <p>Children ids: {JSON.stringify(children_ids)}</p>
     </div>
   );
 };
@@ -73,7 +74,7 @@ export default function Project() {
           credentials: 'include',
         });
         const data = await resp.json();
-        // console.log('data ->', data)
+        console.log('data ->', data);
         if (data.length) {
           setLoaded(true);
           setChanges(data);
