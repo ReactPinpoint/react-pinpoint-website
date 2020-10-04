@@ -6,13 +6,15 @@ export default function Nav({ ...props }) {
   const { loggedIn } = props || false;
   const handleLogout = async () => {
     try {
-      const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
-      const resp = await fetch(`${apiServer}/api/logout`, {
+      const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+      const resp = await fetch(`${apiUrl}/api/logout`, {
         method: 'GET',
         credentials: 'include',
       });
       const data = await resp.json();
-      if (data.loggedOut) router.push('/');
+      if (data.loggedOut) {
+        router.push('/');
+      }
     } catch (err) {
       console.log(err);
     }
@@ -43,7 +45,7 @@ export default function Nav({ ...props }) {
         <div>
           <a
             href="#"
-            className="inline-block px-4 py-2 mt-4 text-sm leading-none border rounded text-neutral-100 border-neutral-100 hover:border-transparent hover:text-primary-500 hover:bg-neutral-100 lg:mt-0"
+            className="inline-block text-sm font-medium text-primary-600 hover:border-transparent hover:text-neutral-1000 lg:mt-0"
             onClick={handleLogout}
           >
             Sign out

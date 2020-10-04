@@ -15,8 +15,8 @@ export default function SignUp() {
     console.log('data.password ->', data.password);
     console.log('Submitting the form!');
 
-    const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
-    fetch(`${apiServer}/api/register`, {
+    const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+    fetch(`${apiUrl}/api/register`, {
       method: 'POST',
       credentials: 'include',
       headers: {

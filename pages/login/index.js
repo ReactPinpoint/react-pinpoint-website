@@ -11,8 +11,8 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
-      const resp = await fetch(`${apiServer}/api/login`, {
+      const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+      const resp = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         credentials: 'include',
         headers: {

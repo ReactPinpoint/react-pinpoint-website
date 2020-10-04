@@ -7,8 +7,8 @@ export default function Add() {
   const router = useRouter();
   const onSubmit = async (data) => {
     try {
-      const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
-      const resp = await fetch(`${apiServer}/api/project`, {
+      const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+      const resp = await fetch(`${apiUrl}/api/project`, {
         method: 'POST',
         credentials: 'include',
         headers: {

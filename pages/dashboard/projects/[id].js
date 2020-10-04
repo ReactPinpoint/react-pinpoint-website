@@ -68,8 +68,8 @@ export default function Project() {
   useEffect(() => {
     const request = async () => {
       try {
-        const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
-        const resp = await fetch(`${apiServer}/api/commit/${id}`, {
+        const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+        const resp = await fetch(`${apiUrl}/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
         });
