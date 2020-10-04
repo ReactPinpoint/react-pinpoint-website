@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import cookies from 'next-cookies';
 import { useState, useEffect } from 'react';
 
 import Nav from '../../components/nav';
@@ -16,10 +18,17 @@ const Project = ({ project }) => {
   );
 };
 
-export default function Dashboard() {
+export default function Dashboard({ token }) {
+  const router = useRouter();
+
   const [projects, setProjects] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
+    if (!token) {
+      router.push('/login');
+    }
+
     (async () => {
       try {
         const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
@@ -55,4 +64,13 @@ export default function Dashboard() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  // Read the cookie
+  const { token } = cookies(ctx);
+
+  return {
+    props: { token: token || null }, // Will be passed to the page component as props
+  };
 }
