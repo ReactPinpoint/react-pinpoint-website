@@ -94,7 +94,7 @@ export default function Dashboard({ token }) {
                         type="button"
                         className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white border border-transparent rounded-md bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-indigo focus:border-primary-700 active:bg-primary-700"
                       >
-                        Add New Project
+                        Add Project
                       </button>
                     </span>
                   </div>
