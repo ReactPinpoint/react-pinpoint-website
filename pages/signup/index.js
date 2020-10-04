@@ -102,7 +102,10 @@ export default function SignUp() {
             <p className="text-xs text-red-600">{errors.confirmPassword && errors.confirmPassword.message}</p>
           </div>
 
-          <button type="submit" className="w-full py-3 my-1 text-center text-white rounded bg-primary-1000 hover:bg-primary-900 focus:outline-none">
+          <button
+            type="submit"
+            className="w-full py-3 my-1 text-center text-white bg-indigo-600 rounded hover:bg-indigo-500 focus:border-indigo-700 active:bg-indigo-700 focus:outline-none"
+          >
             Create Account
           </button>
           <p className="mt-2 text-red-600">{miscError}</p>
@@ -111,7 +114,7 @@ export default function SignUp() {
       <p className="mt-8 text-sm text-primary-1000">
         Have an account?{' '}
         <Link href="/login">
-          <a className="font-medium text-primary-600 hover:text-primary-1000">Sign in</a>
+          <a className="font-medium text-indigo-600 hover:text-primary-1000">Sign in</a>
         </Link>
       </p>
     </div>

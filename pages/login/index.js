@@ -77,7 +77,10 @@ export default function Login() {
             <p className="text-xs text-red-600 ">{errors.password && errors.password.message}</p>
             <p className="text-xs text-red-600">{passwordError}</p>
           </div>
-          <button type="submit" className="w-full py-3 my-1 text-center text-white rounded bg-primary-1000 hover:bg-primary-900 focus:outline-none">
+          <button
+            type="submit"
+            className="w-full py-3 my-1 text-center text-white bg-indigo-600 rounded hover:bg-indigo-500 focus:border-indigo-700 active:bg-indigo-700 focus:outline-none"
+          >
             Continue
           </button>
           <p className="mt-2 text-xs text-red-600">{miscError}</p>
@@ -86,7 +89,7 @@ export default function Login() {
       <p className="mt-8 text-sm text-primary-1000">
         Don't have an account?{' '}
         <Link href="/signup">
-          <a className="font-medium text-primary-600 hover:text-primary-1000">Sign Up</a>
+          <a className="font-medium text-indigo-600 hover:text-primary-1000">Sign Up</a>
         </Link>
       </p>
     </div>
