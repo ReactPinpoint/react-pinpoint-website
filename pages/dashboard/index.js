@@ -14,10 +14,10 @@ const Project = ({ project, token }) => {
   };
 
   return (
-    <li className="border-t border-gray-200">
+    <li className="border-t border-neutral-200">
       <a
         onClick={onViewProject}
-        className="block transition duration-150 ease-in-out cursor-pointer hover:bg-teal-300 focus:outline-none focus:bg-gray-50"
+        className="block transition duration-150 ease-in-out cursor-pointer hover:bg-teal-200 focus:outline-none focus:bg-gray-50"
       >
         <div className="px-4 py-4 sm:px-6">
           <div className="flex items-center justify-between">
@@ -70,7 +70,7 @@ export default function Dashboard({ token }) {
   const projectsList = projects.map((project, i) => <Project token={token} key={`project${i}`} project={project} />);
   return (
     <>
-      <Nav loggedIn="true"></Nav>
+      <Nav loggedIn={true}></Nav>
       <header className="bg-white shadow">
         <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <h1 className="text-2xl font-bold leading-tight text-neutral-900">Dashboard</h1>
@@ -79,7 +79,7 @@ export default function Dashboard({ token }) {
       <main>
         <div className="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 rounded-lg border-neutral-200 h-96">
+            <div className="border-2 rounded-lg border-neutral-200 ">
               <div className="px-4 py-5 bg-white border-b border-neutral-200 sm:px-6">
                 <div className="flex flex-wrap items-center justify-between -mt-4 -ml-4 sm:flex-no-wrap">
                   <div className="mt-4 ml-4">
@@ -92,7 +92,7 @@ export default function Dashboard({ token }) {
                       <button
                         onClick={onAddProject}
                         type="button"
-                        className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white border border-transparent rounded-md bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-indigo focus:border-primary-700 active:bg-primary-700"
+                        className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700"
                       >
                         Add Project
                       </button>
