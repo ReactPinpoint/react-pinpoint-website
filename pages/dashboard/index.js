@@ -7,7 +7,7 @@ const Project = ({ project }) => {
   const { name, description, project_id } = project;
   return (
     <div className="flex flex-col items-start justify-start py-4">
-      <h3 className="text-xl py-3">{name}</h3>
+      <h3 className="py-3 text-xl">{name}</h3>
       <p>{description}</p>
       <Link href={`/dashboard/projects/${project_id}?name=${name}`}>
         <a className="text-blue-500 underline">View Project</a>
@@ -22,7 +22,7 @@ export default function Dashboard() {
   useEffect(() => {
     (async () => {
       try {
-        const apiServer = process.env.NODE_ENV === 'production' ? "https://react-pinpoint-api.herokuapp.com" : "http://localhost:5000";
+        const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
         const resp = await fetch(`${apiServer}/api/project`, {
           method: 'GET',
           credentials: 'include',
@@ -43,14 +43,14 @@ export default function Dashboard() {
     <>
       <Nav loggedIn="true"></Nav>
       <div className="flex flex-col items-center">
-        <h2 className="text-2xl p-5">Dashboard</h2>
+        <h2 className="p-5 text-2xl">Dashboard</h2>
         <div className="flex flex-col items-start">
           {loaded && projectsList}
-        <div className="py-10">
-          <Link href="/dashboard/add">
-            <a className="text-blue-500 underline">Add a Project</a>
-          </Link>
-        </div>
+          <div className="py-10">
+            <Link href="/dashboard/add">
+              <a className="text-blue-500 underline">Add a Project</a>
+            </Link>
+          </div>
         </div>
       </div>
     </>

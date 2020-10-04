@@ -7,7 +7,7 @@ export default function Add() {
   const router = useRouter();
   const onSubmit = async (data) => {
     try {
-      const apiServer = process.env.NODE_ENV === 'production' ? 'https://react-pinpoint-api.herokuapp.com' : 'http://localhost:5000';
+      const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
       const resp = await fetch(`${apiServer}/api/project`, {
         method: 'POST',
         credentials: 'include',
@@ -55,7 +55,7 @@ export default function Add() {
             type="text"
             className="block w-full p-2 mb-4 border rounded border-grey-light"
           />
-          <button type="submit" className="w-full py-3 my-1 text-center text-white bg-primary-1000 rounded hover:bg-primary-900 focus:outline-none">
+          <button type="submit" className="w-full py-3 my-1 text-center text-white rounded bg-primary-1000 hover:bg-primary-900 focus:outline-none">
             Create Project
           </button>
         </form>

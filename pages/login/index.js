@@ -11,7 +11,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const apiServer = process.env.NODE_ENV === 'production' ? 'https://react-pinpoint-api.herokuapp.com' : 'http://localhost:5000';
+      const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
       const resp = await fetch(`${apiServer}/api/login`, {
         method: 'POST',
         credentials: 'include',

@@ -1,24 +1,14 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 import Nav from '../../../components/nav';
-const Tree = dynamic(
-  () => import('../../../components/tree'),
-  { ssr: false }
-)
-
+const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 
 const Commit = ({ commit }) => {
-  const { 
-    component_id, 
-    component_name, 
-    self_base_duration, 
-    parent_component_id, 
-    component_state, 
-    sibling_component_id } = commit;
-  return(
-    <div className="border-2 m-4">
+  const { component_id, component_name, self_base_duration, parent_component_id, component_state, sibling_component_id } = commit;
+  return (
+    <div className="m-4 border-2">
       <p>Component id: {component_id}</p>
       <p>Component name: {component_name}</p>
       <p>Self base duration: {self_base_duration}</p>
@@ -26,19 +16,19 @@ const Commit = ({ commit }) => {
       <p>Component state: {component_state}</p>
       <p>Sibling component id: {sibling_component_id}</p>
     </div>
-  )
-}
+  );
+};
 
 const Change = ({ change }) => {
   const { change_id, commits } = change;
-  const commitsList = commits.map((commit, i) => <Commit key={`Key${i}`} commit={commit} />)
-  return(
-    <div className="border-2 mt-8 mb-8">
+  const commitsList = commits.map((commit, i) => <Commit key={`Key${i}`} commit={commit} />);
+  return (
+    <div className="mt-8 mb-8 border-2">
       <h2>Change {change_id}</h2>
       {commitsList}
     </div>
-  )
-}
+  );
+};
 
 const myTreeData = [
   {
@@ -75,9 +65,9 @@ export default function Project() {
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    const request = async() => {
+    const request = async () => {
       try {
-        const apiServer = process.env.NODE_ENV === 'production' ? "https://react-pinpoint-api.herokuapp.com" : "http://localhost:5000";
+        const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
         const resp = await fetch(`${apiServer}/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
@@ -88,26 +78,24 @@ export default function Project() {
           setLoaded(true);
           setChanges(data);
         }
-      } catch(err) {
+      } catch (err) {
         console.log(err);
       }
-    }
+    };
     if (id) request();
-  }, [loaded, id])
-  const changesList = changes.map((change, i) => <Change key={`Change${i}`} change={change} />)
-  return(
+  }, [loaded, id]);
+  const changesList = changes.map((change, i) => <Change key={`Change${i}`} change={change} />);
+  return (
     <>
-    <Nav loggedIn="true"></Nav>
-    <div className="flex flex-col items-center">
-      <h1 className="text-2xl p-5">{name}</h1>
-      <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
-      <div>
-        {loaded && changesList}
+      <Nav loggedIn="true"></Nav>
+      <div className="flex flex-col items-center">
+        <h1 className="p-5 text-2xl">{name}</h1>
+        <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
+        <div>{loaded && changesList}</div>
+        <div className="w-screen h-screen bg-gray-500">
+          <Tree treeData={myTreeData} />
+        </div>
       </div>
-      <div className="w-screen h-screen bg-gray-500">
-        <Tree treeData={myTreeData} />
-      </div>
-    </div>
     </>
   );
 }
