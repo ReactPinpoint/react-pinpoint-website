@@ -64,13 +64,12 @@ export default function Project() {
   const router = useRouter();
   const { id, name, token } = router.query;
 
-  if (!token) {
-    router.push('/login');
-  }
-
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
+    if (!token) {
+      router.push('/login');
+    }
     const request = async () => {
       try {
         const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
