@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import cookies from 'next-cookies';
+import { useState, useEffect } from 'react';
 
 import Nav from '../../../components/nav';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
@@ -60,9 +61,9 @@ const myTreeData = [
   },
 ];
 
-export default function Project() {
+export default function Project({ token }) {
   const router = useRouter();
-  const { id, name, token } = router.query;
+  const { id, name } = router.query;
 
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -106,4 +107,13 @@ export default function Project() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  // Read the cookie
+  const { token } = cookies(ctx);
+
+  return {
+    props: { token: token || null }, // Will be passed to the page component as props
+  };
 }
