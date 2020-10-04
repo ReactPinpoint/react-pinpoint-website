@@ -14,13 +14,23 @@ const Project = ({ project, token }) => {
   };
 
   return (
-    <div className="flex flex-col items-start justify-start py-4">
-      <h3 className="py-3 text-xl">{name}</h3>
-      <p>{description}</p>
-      <button onClick={onViewProject} className="text-blue-500 underline">
-        View Project
-      </button>
-    </div>
+    <li className="border-t border-gray-200">
+      <a
+        onClick={onViewProject}
+        className="block transition duration-150 ease-in-out cursor-pointer hover:bg-teal-300 focus:outline-none focus:bg-gray-50"
+      >
+        <div className="px-4 py-4 sm:px-6">
+          <div className="flex items-center justify-between">
+            <div className="text-sm font-medium leading-5 text-indigo-600 truncate">{name}</div>
+          </div>
+          <div className="mt-2 sm:flex sm:justify-between">
+            <div className="sm:flex">
+              <div className="flex items-center mr-6 text-sm leading-5 text-gray-500">{description}</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
   );
 };
 
@@ -61,17 +71,42 @@ export default function Dashboard({ token }) {
   return (
     <>
       <Nav loggedIn="true"></Nav>
-      <div className="flex flex-col items-center">
-        <h2 className="p-5 text-2xl">Dashboard</h2>
-        <div className="flex flex-col items-start">
-          {loaded && projectsList}
-          <div className="py-10">
-            <button onClick={onAddProject} className="text-blue-500 underline">
-              Add a Project
-            </button>
+      <header className="bg-white shadow">
+        <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <h1 className="text-2xl font-bold leading-tight text-neutral-900">Dashboard</h1>
+        </div>
+      </header>
+      <main>
+        <div className="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="px-4 py-6 sm:px-0">
+            <div className="border-4 rounded-lg border-neutral-200 h-96">
+              <div className="px-4 py-5 bg-white border-b border-neutral-200 sm:px-6">
+                <div className="flex flex-wrap items-center justify-between -mt-4 -ml-4 sm:flex-no-wrap">
+                  <div className="mt-4 ml-4">
+                    <h3 className="text-lg font-medium leading-6 text-neutral-900">Projects</h3>
+                    <p className="mt-1 text-sm leading-5 text-neutral-500">Here are your current list of projects.</p>
+                    <p className="mt-1 text-sm leading-5 text-neutral-500">Click on the project to view details.</p>
+                  </div>
+                  <div className="flex-shrink-0 mt-4 ml-4">
+                    <span className="inline-flex rounded-md shadow-sm">
+                      <button
+                        onClick={onAddProject}
+                        type="button"
+                        className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white border border-transparent rounded-md bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-indigo focus:border-primary-700 active:bg-primary-700"
+                      >
+                        Add New Project
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="overflow-hidden bg-white shadow sm:rounded-md">
+                <ul>{loaded && projectsList}</ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }
