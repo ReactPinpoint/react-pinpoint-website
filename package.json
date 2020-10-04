@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/ui": "^0.6.2",
     "next": "^9.5.3",
     "next-cookies": "^2.0.3",
     "react": "^16.13.1",

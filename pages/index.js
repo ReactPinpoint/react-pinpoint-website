@@ -1,10 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Nav from '../components/nav';
 import Container from '../components/container';
-import Button from '../components/button';
+
+import { useState } from 'react';
 
 export default function Home() {
+  const [hamburger, setHamburger] = useState(false);
+
+  const handleHamburger = () => {
+    setHamburger(!hamburger);
+  };
+
   return (
     <Container>
       <Head>
@@ -12,27 +18,147 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>React Pinpoint</title>
       </Head>
-      <div>
-        <Nav></Nav>
 
-        <section className="flex flex-col px-10 md:pl-64 justify-evenly bg-primary-100">
-          <div className="max-w-xs md:pt-24">
-            <h1 className="text-4xl font-semibold leading-tight text-primary-1000">Testing smarts for React applications</h1>
-            <h2 className="pt-8 text-lg leading-normal md:pt-4 md:text-base text-primary-600">
-              React Pinpoint helps developers locate performance bottlenecks on their React components.
-            </h2>
-            <div className="mt-6 mb-6">
-              <Link href="/signup">
-                <a>
-                  <Button>Get Started </Button>
-                </a>
-              </Link>
+      <main>
+        <div className="relative overflow-hidden bg-gray-50">
+          {/* Svg Pattern */}
+          <div className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">
+            <div className="relative h-full max-w-screen-xl mx-auto">
+              <svg
+                className="absolute transform right-full translate-y-1/4 translate-x-1/4 lg:translate-x-1/2"
+                width="404"
+                height="784"
+                fill="none"
+                viewBox="0 0 404 784"
+              >
+                <defs>
+                  <pattern id="svg-pattern-squares-1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" className="text-neutral-200" fill="currentColor" />
+                  </pattern>
+                </defs>
+                <rect width="404" height="784" fill="url(#svg-pattern-squares-1)" />
+              </svg>
+              <svg
+                className="absolute transform left-full -translate-y-3/4 -translate-x-1/4 md:-translate-y-1/2 lg:-translate-x-1/2"
+                width="404"
+                height="784"
+                fill="none"
+                viewBox="0 0 404 784"
+              >
+                <defs>
+                  <pattern id="svg-pattern-squares-2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" className="text-neutral-200" fill="currentColor" />
+                  </pattern>
+                </defs>
+                <rect width="404" height="784" fill="url(#svg-pattern-squares-2)" />
+              </svg>
             </div>
           </div>
-          <div className="pb-6">
-            <img className="object-scale-down w-full h-full max-w-lg max-h-lg sm:hidden" src="/hero-image.png" alt="React" />
+
+          {/* Hamburger unexpanded */}
+          <div x-data="{ open: false }" className="relative pt-6 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
+            <div className="max-w-screen-xl px-4 mx-auto sm:px-6">
+              <nav className="relative flex items-center justify-between sm:h-10 md:justify-center">
+                <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                  <div className="flex items-center justify-between w-full md:w-auto">
+                    <Link href="/">
+                      <a>
+                        <svg
+                          className="w-8 h-8 mr-2 fill-current text-primary-1000 hover:text-primary-800"
+                          width="54"
+                          height="54"
+                          viewBox="0 0 54 54"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
+                        </svg>
+                      </a>
+                    </Link>
+
+                    <Link href="/">
+                      <a className="text-3xl font-semibold tracking-tight cursor-pointer text-primary-1000 hover:text-primary-800">React Pinpoint</a>
+                    </Link>
+
+                    <div className="flex items-center -mr-2 md:hidden">
+                      <button
+                        onClick={handleHamburger}
+                        type="button"
+                        className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-neutral-400 hover:text-gray-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-gray-500"
+                      >
+                        <svg className="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+                  <span className="inline-flex rounded-md shadow">
+                    <Link href="/login">
+                      <a className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-600 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-indigo-700">
+                        Log in
+                      </a>
+                    </Link>
+                  </span>
+                </div>
+              </nav>
+            </div>
+
+            {/* Hamburger Expanded */}
+            <div x-show="open" style={{ display: !hamburger ? `none` : `block` }} className="absolute inset-x-0 top-0 p-2 md:hidden">
+              <div className="transition origin-top-right transform rounded-lg shadow-md" x-show="open">
+                <div className="overflow-hidden bg-white rounded-lg shadow-xs">
+                  <div className="flex items-center justify-end px-5 pt-4">
+                    <div className="-mr-2">
+                      <button
+                        onClick={handleHamburger}
+                        type="button"
+                        className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-neutral-400 hover:text-gray-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-gray-500"
+                      >
+                        <svg className="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <Link href="/login">
+                      <a className="block w-full px-5 py-3 font-medium text-center text-indigo-600 transition duration-150 ease-in-out bg-gray-50 hover:bg-neutral-100 hover:text-indigo-700 focus:outline-none focus:bg-neutral-100 focus:text-indigo-700">
+                        Log in
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
+              <div className="text-center">
+                <h2 className="text-4xl font-extrabold leading-10 tracking-tight text-neutral-900 sm:text-5xl sm:leading-none md:text-6xl">
+                  Testing smarts for <br className="xl:hidden" />
+                  <span className="text-indigo-600">React applications</span>
+                </h2>
+                <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                  React Pinpoint helps developers locate performance bottlenecks on their React components.
+                </p>
+                <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
+                  <div className="rounded-md shadow">
+                    <Link href="/signup">
+                      <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10">
+                        Get started
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+
+        {/* Image */}
+        {/*   <div className="pb-6">
+            <img className="object-scale-down w-full h-full max-w-lg max-h-lg sm:hidden" src="/hero-image.png" alt="React" />
+          </div> */}
 
         <section className="flex flex-col items-center pt-8 mx-4 md:pl-64 md:pr-64 md:mx-auto bg-neutral-100">
           <h2 className="text-2xl text-primary-1000">Meet the team.</h2>
@@ -48,9 +174,11 @@ export default function Home() {
                 </a>
               </div>
               <div className="px-6 pt-4 pb-2">
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#photography</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#travel</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#winter</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">
+                  #photography
+                </span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#travel</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#winter</span>
               </div>
             </div>
             <div className="max-w-sm mx-auto my-8 overflow-hidden bg-white rounded-lg shadow-lg xl:mr-8">
@@ -64,9 +192,11 @@ export default function Home() {
                 </a>
               </div>
               <div className="px-6 pt-4 pb-2">
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#photography</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#travel</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#winter</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">
+                  #photography
+                </span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#travel</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#winter</span>
               </div>
             </div>
             <div className="max-w-sm mx-auto my-8 overflow-hidden bg-white rounded-lg shadow-lg xl:mr-8">
@@ -80,9 +210,11 @@ export default function Home() {
                 </a>
               </div>
               <div className="px-6 pt-4 pb-2">
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#photography</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#travel</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#winter</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">
+                  #photography
+                </span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#travel</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#winter</span>
               </div>
             </div>
             <div className="max-w-sm mx-auto my-8 overflow-hidden bg-white rounded-lg shadow-lg">
@@ -96,9 +228,11 @@ export default function Home() {
                 </a>
               </div>
               <div className="px-6 pt-4 pb-2">
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#photography</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#travel</span>
-                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">#winter</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">
+                  #photography
+                </span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#travel</span>
+                <span className="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold rounded-full text-neutral-700 bg-neutral-200">#winter</span>
               </div>
             </div>
           </div>
@@ -107,7 +241,7 @@ export default function Home() {
             <p className="mt-4 text-primary-600">React Pinpoint is open source.</p>
             <p className="text-primary-600">Help make React Pinpoint better!</p>
             <a href="https://github.com/oslabs-beta/react-pinpoint" target="_blank">
-              <button className="flex px-4 py-2 my-8 font-semibold border border-gray-400 rounded shadow focus:outline-none hover:bg-primary-400 bg-primary-500 text-neutral-100">
+              <button className="flex px-4 py-2 my-8 font-semibold border rounded shadow border-neutral-400 focus:outline-none hover:bg-primary-400 bg-primary-500 text-neutral-100">
                 GitHub{' '}
                 <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path
@@ -119,7 +253,7 @@ export default function Home() {
             </a>
           </div>
         </section>
-      </div>
+      </main>
     </Container>
   );
 }
