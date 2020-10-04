@@ -18,6 +18,7 @@ export default function SignUp() {
     const apiServer = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
     fetch(`${apiServer}/api/register`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
