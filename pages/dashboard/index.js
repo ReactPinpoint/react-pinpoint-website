@@ -30,6 +30,10 @@ export default function Dashboard({ token }) {
   const [projects, setProjects] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
+  const onAddProject = () => {
+    router.push({ pathname: `/dashboard/add`, query: { token } });
+  };
+
   useEffect(() => {
     if (!token) {
       router.push('/login');
@@ -62,9 +66,9 @@ export default function Dashboard({ token }) {
         <div className="flex flex-col items-start">
           {loaded && projectsList}
           <div className="py-10">
-            <Link href="/dashboard/add">
-              <a className="text-blue-500 underline">Add a Project</a>
-            </Link>
+            <button onClick={onAddProject} className="text-blue-500 underline">
+              Add a Project
+            </button>
           </div>
         </div>
       </div>

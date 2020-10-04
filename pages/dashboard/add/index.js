@@ -1,10 +1,20 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 
 export default function Add() {
   const { register, handleSubmit, watch, errors } = useForm();
   const router = useRouter();
+
+  const { token } = router.query;
+
+  useEffect(() => {
+    if (!token) {
+      router.push('/login');
+    }
+  });
+
   const onSubmit = async (data) => {
     try {
       const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
@@ -25,6 +35,7 @@ export default function Add() {
       console.log('error -> ', err.message);
     }
   };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 ">
       <Link href="/">
