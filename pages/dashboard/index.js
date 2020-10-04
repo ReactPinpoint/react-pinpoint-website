@@ -68,6 +68,7 @@ export default function Dashboard({ token }) {
   }, [loaded]);
 
   const projectsList = projects.map((project, i) => <Project token={token} key={`project${i}`} project={project} />);
+
   return (
     <>
       <Nav loggedIn={true}></Nav>
@@ -84,8 +85,14 @@ export default function Dashboard({ token }) {
                 <div className="flex flex-wrap items-center justify-between -mt-4 -ml-4 sm:flex-no-wrap">
                   <div className="mt-4 ml-4">
                     <h3 className="text-lg font-medium leading-6 text-neutral-900">Projects</h3>
-                    <p className="mt-1 text-sm leading-5 text-neutral-500">Here are your current list of projects.</p>
-                    <p className="mt-1 text-sm leading-5 text-neutral-500">Click on the project to view details.</p>
+                    {loaded && projectsList.length > 0 ? (
+                      <>
+                        <p className="mt-1 text-sm leading-5 text-neutral-500">Here are your current list of projects.</p>
+                        <p className="mt-1 text-sm leading-5 text-neutral-500">Click on the project to view details.</p>
+                      </>
+                    ) : (
+                      <p className="mt-1 text-sm leading-5 text-neutral-500">Click on the Add Project button to get started.</p>
+                    )}
                   </div>
                   <div className="flex-shrink-0 mt-4 ml-4">
                     <span className="inline-flex rounded-md shadow-sm">
