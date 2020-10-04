@@ -36,7 +36,7 @@ export default function Add() {
     }
   };
 
-  return (
+  return token ? (
     <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 ">
       <Link href="/">
         <a className="mb-4">React Pinpoint Logo Goes Here</a>
@@ -77,5 +77,5 @@ export default function Add() {
         </Link>
       </p>
     </div>
-  );
+  ) : null;
 }
