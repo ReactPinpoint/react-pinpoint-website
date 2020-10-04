@@ -62,7 +62,12 @@ const myTreeData = [
 
 export default function Project() {
   const router = useRouter();
-  const { id, name } = router.query;
+  const { id, name, token } = router.query;
+
+  if (!token) {
+    router.push('/login');
+  }
+
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -91,7 +96,10 @@ export default function Project() {
       <Nav loggedIn="true"></Nav>
       <div className="flex flex-col items-center">
         <h1 className="p-5 text-2xl">{name}</h1>
-        <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
+        <p>
+          Your Project ID is: <span className="font-bold">{id}</span>
+        </p>
+        <p>Pass this ID to React Pinpoint.</p>
         <div>{loaded && changesList}</div>
         <div className="w-screen h-screen bg-gray-500">
           <Tree treeData={myTreeData} />

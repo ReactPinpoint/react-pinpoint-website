@@ -5,15 +5,21 @@ import { useState, useEffect } from 'react';
 
 import Nav from '../../components/nav';
 
-const Project = ({ project }) => {
+const Project = ({ project, token }) => {
+  const router = useRouter();
   const { name, description, project_id } = project;
+
+  const onViewProject = () => {
+    router.push({ pathname: `/dashboard/projects/${project_id}?name=${name}`, query: { token } });
+  };
+
   return (
     <div className="flex flex-col items-start justify-start py-4">
       <h3 className="py-3 text-xl">{name}</h3>
       <p>{description}</p>
-      <Link href={`/dashboard/projects/${project_id}?name=${name}`}>
-        <a className="text-blue-500 underline">View Project</a>
-      </Link>
+      <button onClick={onViewProject} className="text-blue-500 underline">
+        View Project
+      </button>
     </div>
   );
 };
@@ -47,7 +53,7 @@ export default function Dashboard({ token }) {
     })();
   }, [loaded]);
 
-  const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
+  const projectsList = projects.map((project, i) => <Project token={token} key={`project${i}`} project={project} />);
   return (
     <>
       <Nav loggedIn="true"></Nav>
