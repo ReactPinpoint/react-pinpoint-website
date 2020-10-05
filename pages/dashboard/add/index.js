@@ -10,8 +10,9 @@ export default function Add() {
   const { token } = router.query;
 
   useEffect(() => {
+    // Redirect to login page if no token
     if (!token) {
-      router.push('/login');
+      // router.push('/login');
     }
   });
 

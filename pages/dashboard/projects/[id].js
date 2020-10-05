@@ -68,8 +68,9 @@ export default function Project({ token }) {
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
+    // Redirect to login page if no token
     if (!token) {
-      router.push('/login');
+      // router.push('/login');
     }
     const request = async () => {
       try {

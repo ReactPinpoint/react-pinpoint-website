@@ -45,8 +45,9 @@ export default function Dashboard({ token }) {
   };
 
   useEffect(() => {
+    // Redirect to login page if no token
     if (!token) {
-      router.push('/login');
+      // router.push('/login');
     }
 
     (async () => {
