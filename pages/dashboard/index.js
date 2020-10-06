@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import cookies from 'next-cookies';
 import { useState, useEffect } from 'react';
+import isAuthorized from '../../utils/is-authorized';
 
 import Nav from '../../components/nav';
 
-const Project = ({ project, token }) => {
+const Project = ({ project }) => {
   const router = useRouter();
   const { name, description, project_id } = project;
 
@@ -34,21 +34,24 @@ const Project = ({ project, token }) => {
   );
 };
 
-export default function Dashboard({ token }) {
+export default function Dashboard() {
   const router = useRouter();
 
   const [projects, setProjects] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   const onAddProject = () => {
-    router.push({ pathname: `/dashboard/add`, query: { token } });
+    router.push({ pathname: `/dashboard/add` });
   };
 
   useEffect(() => {
-    // Redirect to login page if no token
-    if (!token) {
-      // router.push('/login');
-    }
+    (async () => {
+      const authorized = await isAuthorized();
+      console.log('authorized ->', authorized.success);
+      if (!authorized.success) {
+        router.push('/login');
+      }
+    })();
 
     (async () => {
       try {
@@ -68,7 +71,7 @@ export default function Dashboard({ token }) {
     })();
   }, [loaded]);
 
-  const projectsList = projects.map((project, i) => <Project token={token} key={`project${i}`} project={project} />);
+  const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
 
   return (
     <>
@@ -117,13 +120,4 @@ export default function Dashboard({ token }) {
       </main>
     </>
   );
-}
-
-export async function getServerSideProps(ctx) {
-  // Read the cookie
-  const { token } = cookies(ctx);
-
-  return {
-    props: { token: token || null }, // Will be passed to the page component as props
-  };
 }

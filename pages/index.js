@@ -4,6 +4,8 @@ import Container from '../components/container';
 
 import { useState } from 'react';
 
+console.log(`Currently in ${process.env.NODE_ENV} mode`);
+
 export default function Home() {
   const [hamburger, setHamburger] = useState(false);
 

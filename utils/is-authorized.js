@@ -2,14 +2,13 @@ const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD
 
 export default async function isAuthorized() {
   try {
-    let res = await fetch(`${apiUrl}/api/project`, {
+    let res = await fetch(`${apiUrl}/api/auth`, {
       method: 'GET',
       credentials: 'include',
     });
     res = await res.json();
-    console.log('res is ->', res);
-    return res.success;
+    return res;
   } catch (err) {
-    console.log('Error in authorized ->', err);
+    return err;
   }
 }

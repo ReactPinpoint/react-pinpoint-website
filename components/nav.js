@@ -61,8 +61,7 @@ export default function Nav({ ...props }) {
       {loggedIn && (
         <div>
           <a
-            href="#"
-            className="inline-block text-sm font-medium text-primary-600 hover:border-transparent hover:text-neutral-1000 lg:mt-0"
+            className="inline-block text-sm font-medium text-indigo-600 cursor-pointer hover:border-transparent hover:text-neutral-1000 lg:mt-0"
             onClick={handleLogout}
           >
             Sign out
