@@ -7,7 +7,7 @@ import Nav from '../../../components/nav';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 
 const Commit = ({ commit }) => {
-  const { component_id, component_name, self_base_duration, parent_component_id, component_state, sibling_component_id } = commit;
+  const { component_id, component_name, self_base_duration, parent_component_id, component_state, sibling_component_id, children_ids } = commit;
   return (
     <div className="m-4 border-2">
       <p>Component id: {component_id}</p>
