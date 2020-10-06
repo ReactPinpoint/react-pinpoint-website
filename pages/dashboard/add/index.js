@@ -1,18 +1,22 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import isAuthorized from '../../../utils/is-authorized';
 
 export default function Add() {
   const { register, handleSubmit, watch, errors } = useForm();
+  const [loaded, setLoaded] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     (async () => {
       const authorized = await isAuthorized();
       if (!authorized.success) {
+        setLoaded(false);
         router.push('/login');
+      } else {
+        setLoaded(true);
       }
     })();
   });
@@ -38,7 +42,7 @@ export default function Add() {
     }
   };
 
-  return (
+  return loaded ? (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-screen-md p-8 mx-auto my-0 sm:p-32" noValidate>
       <div>
         <div>
@@ -109,5 +113,7 @@ export default function Add() {
         </div>
       </div>
     </form>
+  ) : (
+    <></>
   );
 }

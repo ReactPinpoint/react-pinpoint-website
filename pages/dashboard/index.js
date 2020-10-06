@@ -48,6 +48,7 @@ export default function Dashboard() {
     (async () => {
       const authorized = await isAuthorized();
       if (!authorized.success) {
+        setLoaded(false);
         router.push('/login');
       }
     })();
@@ -72,7 +73,7 @@ export default function Dashboard() {
 
   const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
 
-  return (
+  return loaded ? (
     <>
       <Nav loggedIn={true}></Nav>
       <header className="bg-white shadow">
@@ -118,5 +119,7 @@ export default function Dashboard() {
         </div>
       </main>
     </>
+  ) : (
+    <> </>
   );
 }

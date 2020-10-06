@@ -71,6 +71,7 @@ export default function Project() {
     (async () => {
       const authorized = await isAuthorized();
       if (!authorized.success) {
+        setLoaded(loaded);
         router.push('/login');
       }
     })();
@@ -94,7 +95,7 @@ export default function Project() {
     if (id) request();
   }, [loaded, id]);
   const changesList = changes.map((change, i) => <Change key={`Change${i}`} change={change} />);
-  return (
+  return loaded ? (
     <>
       <Nav loggedIn="true"></Nav>
       <div className="flex flex-col items-center">
@@ -109,5 +110,7 @@ export default function Project() {
         </div>
       </div>
     </>
+  ) : (
+    <></>
   );
 }
