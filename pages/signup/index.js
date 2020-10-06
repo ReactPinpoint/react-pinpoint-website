@@ -7,6 +7,7 @@ export default function SignUp() {
   const router = useRouter();
   const { register, handleSubmit, watch, errors } = useForm();
   const [existingUserError, setExistingUserError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [miscError, setMiscError] = useState('');
 
   const onSubmit = (data) => {
@@ -25,7 +26,11 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         if (data && data.error) {
-          setExistingUserError(data.error);
+          if (data.error.startsWith('The password')) {
+            setPasswordError(data.error);
+          } else {
+            setExistingUserError(data.error);
+          }
         } else if (data) {
           // Redirect user to dashboard
           router.push('/dashboard');
@@ -94,6 +99,7 @@ export default function SignUp() {
               className="block w-full p-2 mt-2 border rounded border-grey-light"
             />
             <p className="text-xs text-red-600">{errors.confirmPassword && errors.confirmPassword.message}</p>
+            <p className="text-xs text-red-600">{passwordError}</p>
           </div>
 
           <button
