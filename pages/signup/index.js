@@ -10,6 +10,16 @@ export default function SignUp() {
   const [passwordError, setPasswordError] = useState('');
   const [miscError, setMiscError] = useState('');
 
+  const clearUsernameError = () => {
+    if (existingUserError.length) setExistingUserError('');
+    if (miscError.length) setMiscError('');
+  };
+
+  const clearPasswordError = (e) => {
+    if (passwordError.length && e.target.value.length >= 8) setPasswordError('');
+    if (miscError.length) setMiscError('');
+  };
+
   const onSubmit = (data) => {
     const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
     fetch(`${apiUrl}/api/register`, {
@@ -67,6 +77,7 @@ export default function SignUp() {
               id="email"
               type="email"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
+              onChange={() => clearUsernameError()}
             />
             <p className="text-xs text-red-600">{errors.username && errors.username.message}</p>
             <p className="text-xs text-red-600">{existingUserError}</p>
@@ -82,6 +93,7 @@ export default function SignUp() {
               id="password"
               type="password"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
+              onChange={(e) => clearPasswordError(e)}
             />
             <p className="text-xs text-red-600">{errors.password && errors.password.message}</p>
           </div>
@@ -97,6 +109,7 @@ export default function SignUp() {
               id="confirmPassword"
               type="password"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
+              onChange={(e) => clearPasswordError(e)}
             />
             <p className="text-xs text-red-600">{errors.confirmPassword && errors.confirmPassword.message}</p>
             <p className="text-xs text-red-600">{passwordError}</p>
