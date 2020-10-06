@@ -47,7 +47,6 @@ export default function Dashboard() {
   useEffect(() => {
     (async () => {
       const authorized = await isAuthorized();
-      console.log('authorized ->', authorized.success);
       if (!authorized.success) {
         router.push('/login');
       }
@@ -66,7 +65,7 @@ export default function Dashboard() {
           setProjects(data);
         }
       } catch (err) {
-        console.log(err);
+        return err;
       }
     })();
   }, [loaded]);

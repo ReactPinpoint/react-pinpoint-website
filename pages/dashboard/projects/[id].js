@@ -70,7 +70,6 @@ export default function Project() {
   useEffect(() => {
     (async () => {
       const authorized = await isAuthorized();
-      console.log('authorized ->', authorized.success);
       if (!authorized.success) {
         router.push('/login');
       }
@@ -84,13 +83,12 @@ export default function Project() {
           credentials: 'include',
         });
         const data = await resp.json();
-        console.log('data ->', data);
         if (data.length) {
           setLoaded(true);
           setChanges(data);
         }
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     };
     if (id) request();

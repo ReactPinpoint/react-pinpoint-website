@@ -11,7 +11,6 @@ export default function Add() {
   useEffect(() => {
     (async () => {
       const authorized = await isAuthorized();
-      console.log('authorized ->', authorized.success);
       if (!authorized.success) {
         router.push('/login');
       }
@@ -35,7 +34,7 @@ export default function Add() {
       const result = await resp.json();
       if (result.project_id) router.push(`/dashboard/projects/${result.project_id}`);
     } catch (err) {
-      console.log('error -> ', err.message);
+      console.log(err.message);
     }
   };
 

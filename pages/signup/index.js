@@ -10,11 +10,6 @@ export default function SignUp() {
   const [miscError, setMiscError] = useState('');
 
   const onSubmit = (data) => {
-    console.log('data ->', data);
-    console.log('data.username ->', data.username);
-    console.log('data.password ->', data.password);
-    console.log('Submitting the form!');
-
     const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
     fetch(`${apiUrl}/api/register`, {
       method: 'POST',
@@ -29,7 +24,6 @@ export default function SignUp() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('data in result ->', data);
         if (data && data.error) {
           setExistingUserError(data.error);
         } else if (data) {
