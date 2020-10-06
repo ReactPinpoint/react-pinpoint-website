@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import cookies from 'next-cookies';
 import { useState, useEffect } from 'react';
+import isAuthorized from '../../../utils/is-authorized';
 
 import Nav from '../../../components/nav';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
@@ -61,17 +61,21 @@ const myTreeData = [
   },
 ];
 
-export default function Project({ token }) {
+export default function Project() {
   const router = useRouter();
   const { id, name } = router.query;
 
   const [changes, setChanges] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    // Redirect to login page if no token
-    if (!token) {
-      // router.push('/login');
-    }
+    (async () => {
+      const authorized = await isAuthorized();
+      console.log('authorized ->', authorized.success);
+      if (!authorized.success) {
+        router.push('/login');
+      }
+    })();
+
     const request = async () => {
       try {
         const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
@@ -108,13 +112,4 @@ export default function Project({ token }) {
       </div>
     </>
   );
-}
-
-export async function getServerSideProps(ctx) {
-  // Read the cookie
-  const { token } = cookies(ctx);
-
-  return {
-    props: { token: token || null }, // Will be passed to the page component as props
-  };
 }
