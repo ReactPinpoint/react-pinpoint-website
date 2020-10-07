@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Container from '../components/container';
+import Logo from '../components/logo';
 
 import { useState } from 'react';
 
@@ -22,7 +23,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className="relative overflow-hidden bg-gray-50">
+        <div className="relative overflow-hidden bg-neutral-50">
           {/* Svg Pattern */}
           <div className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">
             <div className="relative h-full max-w-screen-xl mx-auto">
@@ -65,27 +66,19 @@ export default function Home() {
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
                       <a>
-                        <svg
-                          className="w-8 h-8 mr-2 fill-current text-primary-1000 hover:text-primary-800"
-                          width="54"
-                          height="54"
-                          viewBox="0 0 54 54"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-                        </svg>
+                        <Logo />
                       </a>
                     </Link>
 
                     <Link href="/">
-                      <a className="text-3xl font-semibold tracking-tight cursor-pointer text-primary-1000 hover:text-primary-800">React Pinpoint</a>
+                      <a className="text-3xl font-semibold tracking-tight text-indigo-600 cursor-pointer hover:text-indigo-500">React Pinpoint</a>
                     </Link>
 
                     <div className="flex items-center -mr-2 md:hidden">
                       <button
                         onClick={handleHamburger}
                         type="button"
-                        className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-neutral-400 hover:text-gray-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-gray-500"
+                        className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-neutral-400 hover:text-neutral-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-neutral-500"
                       >
                         <svg className="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -97,7 +90,7 @@ export default function Home() {
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   <span className="inline-flex rounded-md shadow">
                     <Link href="/login">
-                      <a className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-600 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-indigo-700">
+                      <a className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-indigo-600 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-neutral-50 active:text-indigo-700">
                         Log in
                       </a>
                     </Link>
@@ -115,7 +108,7 @@ export default function Home() {
                       <button
                         onClick={handleHamburger}
                         type="button"
-                        className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-neutral-400 hover:text-gray-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-gray-500"
+                        className="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-neutral-400 hover:text-neutral-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-neutral-500"
                       >
                         <svg className="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -125,7 +118,7 @@ export default function Home() {
                   </div>
                   <div>
                     <Link href="/login">
-                      <a className="block w-full px-5 py-3 font-medium text-center text-indigo-600 transition duration-150 ease-in-out bg-gray-50 hover:bg-neutral-100 hover:text-indigo-700 focus:outline-none focus:bg-neutral-100 focus:text-indigo-700">
+                      <a className="block w-full px-5 py-3 font-medium text-center text-indigo-600 transition duration-150 ease-in-out bg-neutral-50 hover:bg-neutral-100 hover:text-indigo-700 focus:outline-none focus:bg-neutral-100 focus:text-indigo-700">
                         Log in
                       </a>
                     </Link>
@@ -140,7 +133,7 @@ export default function Home() {
                   Testing smarts for <br className="xl:hidden" />
                   <span className="text-indigo-600">React applications</span>
                 </h2>
-                <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                <p className="max-w-md mx-auto mt-3 text-base text-neutral-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                   React Pinpoint helps developers locate performance bottlenecks on their React components.
                 </p>
                 <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
@@ -158,9 +151,119 @@ export default function Home() {
         </div>
 
         {/* Image */}
-        {/*   <div className="pb-6">
-            <img className="object-scale-down w-full h-full max-w-lg max-h-lg sm:hidden" src="/hero-image.png" alt="React" />
-          </div> */}
+        <div className="pb-6">
+          <img className="object-scale-down w-full h-full max-w-lg max-h-lg sm:hidden" src="/hero-image.png" alt="React" />
+        </div>
+        <div className="py-12 bg-white">
+          <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
+            <div className="lg:text-center">
+              <p className="text-base font-semibold leading-6 tracking-wide text-indigo-600 uppercase">Features</p>
+              <h3 className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-neutral-900 sm:text-4xl sm:leading-10">
+                For developers, by developers
+              </h3>
+              <p className="max-w-2xl mt-4 text-xl leading-7 text-neutral-500 lg:mx-auto">
+                React Pinpoint is developed from the ground up by passionate developers, specifically curated to combat pain points for React
+                developers.
+              </p>
+            </div>
+
+            <div className="mt-10">
+              <ul className="md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                <li>
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md">
+                        {/* <!-- Heroicon name: globe-alt --> */}
+                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leading-6 text-neutral-900">Visualize Data</h4>
+                      <p className="mt-2 text-base leading-6 text-neutral-500">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                        blanditiis ratione.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="mt-10 md:mt-0">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md">
+                        {/* <!-- Heroicon name: scale --> */}
+                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leading-6 text-neutral-900">Serialization</h4>
+                      <p className="mt-2 text-base leading-6 text-neutral-500">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                        blanditiis ratione.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="mt-10 md:mt-0">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md">
+                        {/* <!-- Heroicon name: lightning-bolt --> */}
+                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leading-6 text-neutral-900">Automated Testing</h4>
+                      <p className="mt-2 text-base leading-6 text-neutral-500">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                        blanditiis ratione.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="mt-10 md:mt-0">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md">
+                        {/* <!-- Heroicon name: annotation --> */}
+                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leading-6 text-neutral-900">Identify State Changes</h4>
+                      <p className="mt-2 text-base leading-6 text-neutral-500">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
+                        blanditiis ratione.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <section className="flex flex-col items-center pt-8 mx-4 md:pl-64 md:pr-64 md:mx-auto bg-neutral-100">
           <h2 className="text-2xl text-primary-1000">Meet the team.</h2>
@@ -239,11 +342,11 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <h2 className="mt-8 text-2xl text-primary-1000">Want to contribute?</h2>
-            <p className="mt-4 text-primary-600">React Pinpoint is open source.</p>
-            <p className="text-primary-600">Help make React Pinpoint better!</p>
+            <h2 className="mt-8 text-2xl text-neutral-1000">Want to contribute?</h2>
+            <p className="mt-4 text-neutral-600">React Pinpoint is open source.</p>
+            <p className="text-neutral-600">Help make React Pinpoint better!</p>
             <a href="https://github.com/oslabs-beta/react-pinpoint" target="_blank">
-              <button className="flex px-4 py-2 my-8 font-semibold border rounded shadow border-neutral-400 focus:outline-none hover:bg-primary-400 bg-primary-500 text-neutral-100">
+              <button className="flex px-4 py-2 my-8 font-semibold bg-indigo-600 border rounded shadow border-neutral-400 focus:outline-none hover:bg-indigo-500 text-neutral-100">
                 GitHub{' '}
                 <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path
