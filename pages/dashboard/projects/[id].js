@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import isAuthorized from '../../../utils/is-authorized';
 
 import Nav from '../../../components/nav';
+import Breadcrumbs from '../../../components/breadcrumbs';
 import Layout from '../../../components/layout';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 const TreeMenu = dynamic(() => import('../../../components/treemenu'), { ssr: false });
@@ -143,6 +144,7 @@ export default function Project() {
   return (
     <Layout>
       <Nav loggedIn="true"></Nav>
+      <Breadcrumbs text="> Project" />
       <div className="flex flex-col items-center">
         <h1 className="p-5 text-2xl">{name}</h1>
         <p>Your project id is: {id}. Pass this id to react pinpoint.</p>

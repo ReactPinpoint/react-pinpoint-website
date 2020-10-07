@@ -5,6 +5,7 @@ import isAuthorized from '../../utils/is-authorized';
 
 import Layout from '../../components/layout';
 import Nav from '../../components/nav';
+import Breadcrumbs from '../../components/breadcrumbs';
 
 const Project = ({ project }) => {
   const router = useRouter();
@@ -41,10 +42,6 @@ export default function Dashboard() {
   const [projects, setProjects] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
-  const onAddProject = () => {
-    router.push({ pathname: `/dashboard/add` });
-  };
-
   useEffect(() => {
     (async () => {
       const authorized = await isAuthorized();
@@ -77,11 +74,7 @@ export default function Dashboard() {
   return loaded ? (
     <Layout>
       <Nav loggedIn={true}></Nav>
-      <header className="bg-white shadow">
-        <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold leading-tight text-neutral-900">Dashboard</h1>
-        </div>
-      </header>
+      <Breadcrumbs />
       <main>
         <div className="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
@@ -101,13 +94,14 @@ export default function Dashboard() {
                   </div>
                   <div className="flex-shrink-0 mt-4 ml-4">
                     <span className="inline-flex rounded-md shadow-sm">
-                      <button
-                        onClick={onAddProject}
-                        type="button"
-                        className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700"
-                      >
-                        Add Project
-                      </button>
+                      <Link href="/dashboard/add">
+                        <a
+                          type="button"
+                          className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700"
+                        >
+                          Add Project
+                        </a>
+                      </Link>
                     </span>
                   </div>
                 </div>
