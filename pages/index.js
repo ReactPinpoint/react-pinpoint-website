@@ -159,7 +159,7 @@ export default function Home() {
             <div className="lg:text-center">
               <p className="text-base font-semibold leading-6 tracking-wide text-indigo-600 uppercase">Features</p>
               <h3 className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-neutral-900 sm:text-4xl sm:leading-10">
-                For developers, by developers
+                For Developers. By Developers.
               </h3>
               <p className="max-w-2xl mt-4 text-xl leading-7 text-neutral-500 lg:mx-auto">
                 React Pinpoint is developed from the ground up by passionate developers, specifically curated to combat pain points for React
