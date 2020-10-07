@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import isAuthorized from '../../../utils/is-authorized';
 
 import Nav from '../../../components/nav';
+import Breadcrumbs from '../../../components/breadcrumbs';
+import Layout from '../../../components/layout';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 const TreeMenu = dynamic(() => import('../../../components/treemenu'), { ssr: false });
 
@@ -72,15 +74,12 @@ export default function Project() {
     },
   ]);
   const [loaded, setLoaded] = useState(false);
-  const [changeIndex, setChangeIndex] = useState(0)
+  const [changeIndex, setChangeIndex] = useState(0);
   useEffect(() => {
     const request = async () => {
       try {
-        const apiServer =
-          process.env.NODE_ENV === 'production'
-            ? 'https://react-pinpoint-api.herokuapp.com'
-            : 'http://localhost:5000';
-        const resp = await fetch(`${apiServer}/api/commit/${id}`, {
+        const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+        const resp = await fetch(`${apiUrl}/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -140,31 +139,81 @@ export default function Project() {
       result.children = populateChild(result.children_ids);
     }
     setTreeData([result]);
-  }, [changes, changeIndex])
-  
+  }, [changes, changeIndex]);
+
   return (
-    <>
+    <Layout>
       <Nav loggedIn="true"></Nav>
+      <Breadcrumbs text="> Project" />
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl p-5">{name}</h1>
-        <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
-        {loaded 
-          ? <div className="w-3/4 h-screen bg-white flex flex-row">
+        <div className="flex flex-col items-center p-10 ">
+          <p className="pt-4 text-xl font-semibold leading-tight text-indigo-600">{name}</p>
+          <p className="pt-4 text-lg font-medium leading-tight text-neutral-600">
+            Your Project ID is: <span className="font-semibold text-indigo-600">{id}</span>
+          </p>
+          <p className="pt-4 text-lg font-medium leading-tight text-neutral-600"> Pass this ID to React Pinpoint.</p>
+        </div>
+
+        {loaded ? (
+          <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border rounded">
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
             <Tree treeData={treeData} />
           </div>
-          : <div>
-            <h3>Step 1</h3>
-            <p>DO something</p>
-            <h3>Step 2</h3>
-            <p>DO something</p>
-            <h3>Step 3</h3>
-            <p>DO something</p>
-            <h3>Step 4</h3>
-            <p>DO something</p>
-            </div>
-        }
+        ) : (
+          <div>
+            <ul className="max-w-lg overflow-hidden">
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">01</p>
+                  </div>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">Iusto et officia maiores porro ad non quas.</p>
+                </div>
+              </li>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">02</p>
+                  </div>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
+                    Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
+                  </p>
+                </div>
+              </li>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">03</p>
+                  </div>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
+                    Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
+                  </p>
+                </div>
+              </li>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">04</p>
+                  </div>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
+                    Iusto et officia maiores porro ad non usto et officia maioresusto et officia maiores quasmaiores
+                  </p>
+                </div>
+              </li>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">05</p>
+                  </div>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
+                    Iusto et officia maiores porro usto et officia maiores ad non quasmaiores
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
-    </>
+    </Layout>
   );
 }
