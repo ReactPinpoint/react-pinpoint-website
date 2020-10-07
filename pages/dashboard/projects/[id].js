@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import isAuthorized from '../../../utils/is-authorized';
 
@@ -75,10 +76,10 @@ export default function Project() {
   ]);
   const [loaded, setLoaded] = useState(false);
   const [changeIndex, setChangeIndex] = useState(0);
+  const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
   useEffect(() => {
     const request = async () => {
       try {
-        const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
         const resp = await fetch(`${apiUrl}/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
@@ -152,6 +153,11 @@ export default function Project() {
             Your Project ID is: <span className="font-semibold text-indigo-600">{id}</span>
           </p>
           <p className="pt-4 text-lg font-medium leading-tight text-neutral-600"> Pass this ID to React Pinpoint.</p>
+          {loaded && (
+            <Link href={`${apiUrl}/api/commit/${id}`}>
+              <a>View project data in JSON format.</a>
+            </Link>
+          )}
         </div>
 
         {loaded ? (
