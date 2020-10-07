@@ -85,8 +85,8 @@ export default function Dashboard() {
                     {loaded && projectsList.length > 0 ? (
                       <>
                         <h3 className="text-lg font-medium leading-6 text-neutral-900">Projects</h3>
-                        <p className="mt-1 text-sm leading-5 text-neutral-500">Here are your current list of projects.</p>
-                        <p className="mt-1 text-sm leading-5 text-neutral-500">Click on the project to view details.</p>
+                        <p className="mt-1 text-sm leading-5 text-neutral-700">Here are your current list of projects.</p>
+                        <p className="mt-1 text-sm leading-5 text-neutral-700">Click on the project to view details.</p>
                       </>
                     ) : (
                       <p className="text-lg font-medium text-neutral-900">Click on the Add Project button to get started.</p>

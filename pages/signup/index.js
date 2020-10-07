@@ -58,7 +58,7 @@ export default function SignUp() {
     <Layout>
       <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 ">
         <Link href="/">
-          <a className="mb-4">
+          <a aria-label="React Pinpoint" className="mb-4">
             <Logo />
           </a>
         </Link>
