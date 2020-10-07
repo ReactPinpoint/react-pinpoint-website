@@ -277,9 +277,8 @@ export default function Home() {
                         alt=""
                       />
                       <div className="space-y-2">
-                        <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
+                        <div className="flex flex-col items-center pb-4 text-xs font-medium leading-4 md:pb-0 lg:text-sm lg:leading-5">
                           <h4 className="text-neutral-1000">Tai Nguyen</h4>
-                          <p className="text-indigo-600">Co-Founder / CTO</p>
                           <a href="https://github.com/ndhuutai" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
@@ -300,7 +299,6 @@ export default function Home() {
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <h4 className="text-neutral-1000">Jeffrey C. Lu</h4>
-                          <p className="text-indigo-600">Co-Founder / CTO</p>
                           <a href="https://github.com/jeffreyclu" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
@@ -321,7 +319,6 @@ export default function Home() {
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <h4 className="text-neutral-1000">Matthew Batelic</h4>
-                          <p className="text-indigo-600">Co-Founder / CTO</p>
                           <a href="https://github.com/batelicm" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
@@ -342,7 +339,6 @@ export default function Home() {
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <h4 className="text-neutral-1000">Robert Luo</h4>
-                          <p className="text-indigo-600">Co-Founder / CTO</p>
                           <a href="https://github.com/robertxluo" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
