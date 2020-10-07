@@ -31,13 +31,18 @@ export default function Nav({ ...props }) {
     >
       <div className="flex items-center flex-shrink-0 mr-6 text-neutral-1000">
         <Link href={loggedIn ? '/dashboard' : '/'}>
-          <a>
+          <a aria-label="React Pinpoint">
             <Logo />
           </a>
         </Link>
 
         <Link href={loggedIn ? '/dashboard' : '/'}>
-          <a className="text-4xl font-semibold tracking-tight cursor-pointer text-indigo-600 hover:text-indigo-500 md:text-2xl">React Pinpoint</a>
+          <a
+            className="text-4xl font-semibold tracking-tight text-indigo-600 cursor-pointer hover:text-indigo-500 md:text-2xl"
+            aria-label="React Pinpoint"
+          >
+            React Pinpoint
+          </a>
         </Link>
       </div>
 

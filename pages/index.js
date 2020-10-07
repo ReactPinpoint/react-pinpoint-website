@@ -58,13 +58,18 @@ export default function Home() {
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
-                      <a>
+                      <a aria-label="React Pinpoint">
                         <Logo />
                       </a>
                     </Link>
 
                     <Link href="/">
-                      <a className="text-3xl font-semibold tracking-tight text-indigo-600 cursor-pointer hover:text-indigo-500">React Pinpoint</a>
+                      <a
+                        aria-label="React Pinpoint"
+                        className="text-3xl font-semibold tracking-tight text-indigo-600 cursor-pointer hover:text-indigo-500"
+                      >
+                        React Pinpoint
+                      </a>
                     </Link>
 
                     <div className="flex items-center -mr-2 md:hidden">
@@ -126,7 +131,7 @@ export default function Home() {
                   Testing smarts for <br className="xl:hidden" />
                   <span className="text-indigo-600">React applications</span>
                 </h2>
-                <p className="max-w-md mx-auto mt-3 text-base text-neutral-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                <p className="max-w-md mx-auto mt-3 text-base text-neutral-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                   React Pinpoint helps developers locate performance bottlenecks on their React components.
                 </p>
                 <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
@@ -156,7 +161,7 @@ export default function Home() {
                 <h3 className="mt-2 text-3xl font-bold leading-8 tracking-tight text-neutral-900 sm:text-4xl sm:leading-10">
                   For Developers. By Developers.
                 </h3>
-                <p className="max-w-2xl mt-4 text-xl leading-7 text-neutral-600 lg:mx-auto">
+                <p className="max-w-2xl mt-4 text-xl leading-7 text-neutral-700 lg:mx-auto">
                   React Pinpoint is built from the ground up by passionate developers, curated to combat pain points for React developers.
                 </p>
               </div>
@@ -180,7 +185,7 @@ export default function Home() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Extract React Fiber Data</h4>
-                        <p className="mt-2 text-base leading-6 text-neutral-600">
+                        <p className="mt-2 text-base leading-6 text-neutral-700">
                           React Pinpoint extracts data from React Fiber to help you analyze performance of individual fibers. React Fiber is the
                           internal data structure that React uses to reconcile before updating the DOM.
                         </p>
@@ -204,7 +209,7 @@ export default function Home() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Serialization</h4>
-                        <p className="mt-2 text-base leading-6 text-neutral-600">
+                        <p className="mt-2 text-base leading-6 text-neutral-700">
                           You will have access to serialized data that can help you develop other tools such as visualization, chrome extensions,
                           analytics, time travel debugger, etc. React Pinpoint preserves the original structure of React Fiber tree in a 1-dimensional
                           array and allows you to reconstruct the tree structure when needed.
@@ -229,7 +234,7 @@ export default function Home() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Automated Testing</h4>
-                        <p className="mt-2 text-base leading-6 text-neutral-600">
+                        <p className="mt-2 text-base leading-6 text-neutral-700">
                           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
                           blanditiis ratione.
                         </p>
@@ -248,7 +253,7 @@ export default function Home() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Identify State Changes</h4>
-                        <p className="mt-2 text-base leading-6 text-neutral-600">
+                        <p className="mt-2 text-base leading-6 text-neutral-700">
                           With React Pinpoint, you can see exactly what has changed every time React Fiber commits or renders allowing you to see how
                           performant they are and helping you develop better React code.
                         </p>
@@ -271,15 +276,11 @@ export default function Home() {
                 <ul className="grid grid-cols-2 row-gap-8 col-gap-4 mx-auto sm:grid-cols-4 md:col-gap-6 lg:max-w-5xl lg:col-gap-8 lg:row-gap-12 ">
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24"
-                        src={`https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80`}
-                        alt=""
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/tai.png" alt="Picture of Tai" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center pb-4 text-xs font-medium leading-4 md:pb-0 lg:text-sm lg:leading-5">
-                          <h4 className="text-neutral-1000">Tai Nguyen</h4>
-                          <a href="https://github.com/ndhuutai" target="_blank">
+                          <p className="text-neutral-1000">Tai Nguyen</p>
+                          <a rel="noopener noreferrer" href="https://github.com/ndhuutai" aria-label="Tai's GitHub" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
                               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -291,15 +292,11 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24"
-                        src={`https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80`}
-                        alt=""
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/jeff.jpeg" alt="Picture of Jeffrey" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
-                          <h4 className="text-neutral-1000">Jeffrey C. Lu</h4>
-                          <a href="https://github.com/jeffreyclu" target="_blank">
+                          <p className="text-neutral-1000">Jeffrey C. Lu</p>
+                          <a rel="noopener noreferrer" href="https://github.com/jeffreyclu" aria-label="Jeffrey's GitHub" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
                               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -311,15 +308,11 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24"
-                        src={`https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80`}
-                        alt=""
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/matt.jpeg" alt="Picture of Matt" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
-                          <h4 className="text-neutral-1000">Matthew Batelic</h4>
-                          <a href="https://github.com/batelicm" target="_blank">
+                          <p className="text-neutral-1000">Matthew Batelic</p>
+                          <a rel="noopener noreferrer" href="https://github.com/batelicm" aria-label="Matt's GitHub" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
                               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -331,15 +324,11 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24"
-                        src={`https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80`}
-                        alt=""
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/rob.jpeg" alt="Picture of Rob" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
-                          <h4 className="text-neutral-1000">Robert Luo</h4>
-                          <a href="https://github.com/robertxluo" target="_blank">
+                          <p className="text-neutral-1000">Robert Luo</p>
+                          <a rel="noopener noreferrer" href="https://github.com/robertxluo" aria-label="Rob's GitHub" target="_blank">
                             <svg height="24" width="24" className="cursor-pointer " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <title>GitHub icon</title>
                               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -355,9 +344,14 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center">
             <h2 className="mt-8 text-2xl text-neutral-1000">Want to contribute?</h2>
-            <p className="mt-4 text-neutral-600">React Pinpoint is open source.</p>
-            <p className="text-neutral-600">Help make React Pinpoint better!</p>
-            <a href="https://github.com/oslabs-beta/react-pinpoint" target="_blank">
+            <p className="mt-4 text-neutral-700">React Pinpoint is open source.</p>
+            <p className="text-neutral-700">Help make React Pinpoint better!</p>
+            <a
+              rel="noopener noreferrer"
+              href="https://github.com/oslabs-beta/react-pinpoint"
+              aria-label="React Pinpoint's GitHub Link"
+              target="_blank"
+            >
               <button className="flex px-4 py-2 my-8 font-semibold bg-indigo-600 border rounded shadow border-neutral-400 focus:outline-none hover:bg-indigo-500 text-neutral-100">
                 GitHub{' '}
                 <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
