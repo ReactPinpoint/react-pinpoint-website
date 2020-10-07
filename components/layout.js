@@ -13,7 +13,7 @@ export default function Layout({ children, title = 'React Pinpoint' }) {
           content="React Pinpoint is a utility testing library to pinpoint slow React components."
         />
         <title>{title}</title>
-        <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
       {children}
     </>
