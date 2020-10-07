@@ -146,7 +146,7 @@ export default function Project() {
       <Nav loggedIn="true"></Nav>
       <Breadcrumbs text="> Project" />
       <div className="flex flex-col items-center">
-        <h1 className="p-5 text-2xl">{name}</h1>
+        <p className="text-2xl">{name}</p>
         <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
         {loaded ? (
           <div className="flex flex-row w-3/4 h-screen bg-white">
@@ -155,14 +155,56 @@ export default function Project() {
           </div>
         ) : (
           <div>
-            <h3>Step 1</h3>
-            <p>DO something</p>
-            <h3>Step 2</h3>
-            <p>DO something</p>
-            <h3>Step 3</h3>
-            <p>DO something</p>
-            <h3>Step 4</h3>
-            <p>DO something</p>
+            <ul class="overflow-hidden max-w-lg">
+              <li class="relative md:flex-1 md:flex">
+                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
+                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
+                    <p class="text-indigo-600">01</p>
+                  </div>
+                  <p class="text-sm leading-5 font-medium text-indigo-600">Iusto et officia maiores porro ad non quas.</p>
+                </div>
+              </li>
+              <li class="relative md:flex-1 md:flex">
+                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
+                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
+                    <p class="text-indigo-600">02</p>
+                  </div>
+                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                    Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
+                  </p>
+                </div>
+              </li>
+              <li class="relative md:flex-1 md:flex">
+                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
+                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
+                    <p class="text-indigo-600">03</p>
+                  </div>
+                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                    Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
+                  </p>
+                </div>
+              </li>
+              <li class="relative md:flex-1 md:flex">
+                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
+                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
+                    <p class="text-indigo-600">04</p>
+                  </div>
+                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                    Iusto et officia maiores porro ad non usto et officia maioresusto et officia maiores quasmaiores
+                  </p>
+                </div>
+              </li>
+              <li class="relative md:flex-1 md:flex">
+                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
+                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
+                    <p class="text-indigo-600">05</p>
+                  </div>
+                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                    Iusto et officia maiores porro usto et officia maiores ad non quasmaiores
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
         )}
       </div>
