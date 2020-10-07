@@ -61,8 +61,8 @@ export default function Dashboard() {
           credentials: 'include',
         });
         const data = await resp.json();
+        setLoaded(true);
         if (data.length) {
-          setLoaded(true);
           setProjects(data);
         }
       } catch (err) {

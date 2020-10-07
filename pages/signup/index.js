@@ -3,11 +3,24 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
+import Logo from '../../components/logo';
+
 export default function SignUp() {
   const router = useRouter();
   const { register, handleSubmit, watch, errors } = useForm();
   const [existingUserError, setExistingUserError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [miscError, setMiscError] = useState('');
+
+  const clearUsernameError = () => {
+    if (existingUserError.length) setExistingUserError('');
+    if (miscError.length) setMiscError('');
+  };
+
+  const clearPasswordError = (e) => {
+    if (passwordError.length && e.target.value.length >= 8) setPasswordError('');
+    if (miscError.length) setMiscError('');
+  };
 
   const onSubmit = (data) => {
     const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
@@ -25,7 +38,11 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         if (data && data.error) {
-          setExistingUserError(data.error);
+          if (data.error.startsWith('The password')) {
+            setPasswordError(data.error);
+          } else {
+            setExistingUserError(data.error);
+          }
         } else if (data) {
           // Redirect user to dashboard
           router.push('/dashboard');
@@ -40,9 +57,7 @@ export default function SignUp() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 ">
       <Link href="/">
         <a className="mb-4">
-          <svg className="w-8 h-8 mr-2 fill-current" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-          </svg>
+          <Logo />
         </a>
       </Link>
       <div className="w-full max-w-md p-12 bg-white rounded shadow-md text-neutral-1000">
@@ -62,6 +77,7 @@ export default function SignUp() {
               id="email"
               type="email"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
+              onChange={() => clearUsernameError()}
             />
             <p className="text-xs text-red-600">{errors.username && errors.username.message}</p>
             <p className="text-xs text-red-600">{existingUserError}</p>
@@ -77,6 +93,7 @@ export default function SignUp() {
               id="password"
               type="password"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
+              onChange={(e) => clearPasswordError(e)}
             />
             <p className="text-xs text-red-600">{errors.password && errors.password.message}</p>
           </div>
@@ -92,8 +109,10 @@ export default function SignUp() {
               id="confirmPassword"
               type="password"
               className="block w-full p-2 mt-2 border rounded border-grey-light"
+              onChange={(e) => clearPasswordError(e)}
             />
             <p className="text-xs text-red-600">{errors.confirmPassword && errors.confirmPassword.message}</p>
+            <p className="text-xs text-red-600">{passwordError}</p>
           </div>
 
           <button

@@ -1,6 +1,8 @@
 import { Router, useRouter } from 'next/router';
 import Link from 'next/link';
 
+import Logo from '../components/logo';
+
 export default function Nav({ ...props }) {
   const router = useRouter();
   const { loggedIn } = props || false;
@@ -30,20 +32,12 @@ export default function Nav({ ...props }) {
       <div className="flex items-center flex-shrink-0 mr-6 text-neutral-1000">
         <Link href={loggedIn ? '/dashboard' : '/'}>
           <a>
-            <svg
-              className="w-8 h-8 mr-2 fill-current text-primary-1000 hover:text-primary-800"
-              width="54"
-              height="54"
-              viewBox="0 0 54 54"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-            </svg>
+            <Logo />
           </a>
         </Link>
 
         <Link href={loggedIn ? '/dashboard' : '/'}>
-          <a className="text-4xl font-semibold tracking-tight cursor-pointer text-primary-1000 hover:text-primary-800 md:text-2xl">React Pinpoint</a>
+          <a className="text-4xl font-semibold tracking-tight cursor-pointer text-indigo-600 hover:text-indigo-500 md:text-2xl">React Pinpoint</a>
         </Link>
       </div>
 
