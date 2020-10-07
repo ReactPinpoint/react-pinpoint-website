@@ -157,8 +157,7 @@ export default function Home() {
                   For Developers. By Developers.
                 </h3>
                 <p className="max-w-2xl mt-4 text-xl leading-7 text-neutral-600 lg:mx-auto">
-                  React Pinpoint is developed from the ground up by passionate developers, specifically curated to combat pain points for React
-                  developers.
+                  React Pinpoint is built from the ground up by passionate developers, curated to combat pain points for React developers.
                 </p>
               </div>
 
