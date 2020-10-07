@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import isAuthorized from '../../../utils/is-authorized';
 
 import Nav from '../../../components/nav';
+import Layout from '../../../components/layout';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 const TreeMenu = dynamic(() => import('../../../components/treemenu'), { ssr: false });
 
@@ -72,15 +73,12 @@ export default function Project() {
     },
   ]);
   const [loaded, setLoaded] = useState(false);
-  const [changeIndex, setChangeIndex] = useState(0)
+  const [changeIndex, setChangeIndex] = useState(0);
   useEffect(() => {
     const request = async () => {
       try {
-        const apiServer =
-          process.env.NODE_ENV === 'production'
-            ? 'https://react-pinpoint-api.herokuapp.com'
-            : 'http://localhost:5000';
-        const resp = await fetch(`${apiServer}/api/commit/${id}`, {
+        const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+        const resp = await fetch(`${apiUrl}/api/commit/${id}`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -140,20 +138,21 @@ export default function Project() {
       result.children = populateChild(result.children_ids);
     }
     setTreeData([result]);
-  }, [changes, changeIndex])
-  
+  }, [changes, changeIndex]);
+
   return (
-    <>
+    <Layout>
       <Nav loggedIn="true"></Nav>
       <div className="flex flex-col items-center">
-        <h1 className="text-2xl p-5">{name}</h1>
+        <h1 className="p-5 text-2xl">{name}</h1>
         <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
-        {loaded 
-          ? <div className="w-3/4 h-screen bg-white flex flex-row">
+        {loaded ? (
+          <div className="flex flex-row w-3/4 h-screen bg-white">
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
             <Tree treeData={treeData} />
           </div>
-          : <div>
+        ) : (
+          <div>
             <h3>Step 1</h3>
             <p>DO something</p>
             <h3>Step 2</h3>
@@ -162,9 +161,9 @@ export default function Project() {
             <p>DO something</p>
             <h3>Step 4</h3>
             <p>DO something</p>
-            </div>
-        }
+          </div>
+        )}
       </div>
-    </>
+    </Layout>
   );
 }

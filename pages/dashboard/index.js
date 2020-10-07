@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import isAuthorized from '../../utils/is-authorized';
 
+import Layout from '../../components/layout';
 import Nav from '../../components/nav';
 
 const Project = ({ project }) => {
@@ -74,7 +75,7 @@ export default function Dashboard() {
   const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
 
   return loaded ? (
-    <>
+    <Layout>
       <Nav loggedIn={true}></Nav>
       <header className="bg-white shadow">
         <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -118,8 +119,8 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   ) : (
-    <> </>
+    <Layout> </Layout>
   );
 }

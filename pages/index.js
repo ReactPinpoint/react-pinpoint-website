@@ -1,6 +1,5 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import Container from '../components/container';
+import Layout from '../components/layout';
 import Logo from '../components/logo';
 
 import { useState } from 'react';
@@ -15,13 +14,7 @@ export default function Home() {
   };
 
   return (
-    <Container>
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>React Pinpoint</title>
-      </Head>
-
+    <Layout>
       <main>
         <div className="relative overflow-hidden bg-neutral-50">
           {/* Svg Pattern */}
@@ -359,6 +352,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-    </Container>
+    </Layout>
   );
 }
