@@ -146,60 +146,66 @@ export default function Project() {
       <Nav loggedIn="true"></Nav>
       <Breadcrumbs text="> Project" />
       <div className="flex flex-col items-center">
-        <p className="text-2xl">{name}</p>
-        <p>Your project id is: {id}. Pass this id to react pinpoint.</p>
+        <div className="flex flex-col items-center p-10 ">
+          <p className="pt-4 text-xl font-semibold leading-tight text-indigo-600">{name}</p>
+          <p className="pt-4 text-lg font-medium leading-tight text-neutral-600">
+            Your Project ID is: <span className="font-semibold text-indigo-600">{id}</span>
+          </p>
+          <p className="pt-4 text-lg font-medium leading-tight text-neutral-600"> Pass this ID to React Pinpoint.</p>
+        </div>
+
         {loaded ? (
-          <div className="flex flex-row w-3/4 h-screen bg-white">
+          <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border rounded">
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
             <Tree treeData={treeData} />
           </div>
         ) : (
           <div>
-            <ul class="overflow-hidden max-w-lg">
-              <li class="relative md:flex-1 md:flex">
-                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                    <p class="text-indigo-600">01</p>
+            <ul className="max-w-lg overflow-hidden">
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">01</p>
                   </div>
-                  <p class="text-sm leading-5 font-medium text-indigo-600">Iusto et officia maiores porro ad non quas.</p>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">Iusto et officia maiores porro ad non quas.</p>
                 </div>
               </li>
-              <li class="relative md:flex-1 md:flex">
-                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                    <p class="text-indigo-600">02</p>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">02</p>
                   </div>
-                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
                     Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
                   </p>
                 </div>
               </li>
-              <li class="relative md:flex-1 md:flex">
-                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                    <p class="text-indigo-600">03</p>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">03</p>
                   </div>
-                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
                     Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
                   </p>
                 </div>
               </li>
-              <li class="relative md:flex-1 md:flex">
-                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                    <p class="text-indigo-600">04</p>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">04</p>
                   </div>
-                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
                     Iusto et officia maiores porro ad non usto et officia maioresusto et officia maiores quasmaiores
                   </p>
                 </div>
               </li>
-              <li class="relative md:flex-1 md:flex">
-                <div class="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-                  <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                    <p class="text-indigo-600">05</p>
+              <li className="relative md:flex-1 md:flex">
+                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+                    <p className="text-indigo-600">05</p>
                   </div>
-                  <p class="text-sm leading-5 font-medium text-indigo-600">
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
                     Iusto et officia maiores porro usto et officia maiores ad non quasmaiores
                   </p>
                 </div>
