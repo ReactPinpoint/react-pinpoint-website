@@ -10,7 +10,7 @@ const Project = ({ project }) => {
   const { name, description, project_id } = project;
 
   const onViewProject = () => {
-    router.push({ pathname: `/dashboard/projects/${project_id}?name=${name}` });
+    router.push({ pathname: `/dashboard/projects/${project_id}`, query: { name } });
   };
 
   return (

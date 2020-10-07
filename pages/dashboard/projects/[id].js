@@ -99,7 +99,6 @@ export default function Project() {
 
   useEffect(() => {
     if (!changes.length) return;
-    console.log('here')
     // example, getting the first change
     // i put them in a map so that later on i can
     // reference it to populate each child_id with actual object.
@@ -115,7 +114,7 @@ export default function Project() {
     // to start with recursive calls.
     const result = changes[changeIndex].commits[0];
     result.name = 'root';
-    console.log('RESULT', result);
+    // console.log('RESULT', result);
     function populateChild(arr) {
       const resultArr = [];
       for (let i = 0; i < arr.length; i++) {
@@ -128,7 +127,7 @@ export default function Project() {
               compState[key] = `${component.component_state[key]}`;
             }
           } else {
-            compState = 'null';
+            compState = null;
           }
           component.attributes = compState;
           component.children = populateChild(component.children_ids);

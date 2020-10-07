@@ -7,7 +7,7 @@ export default function TreeComponent({ treeData }) {
     <Tree 
       data={treeData} 
       orientation="horizontal"
-      transitionDuration="0"
+      transitionDuration={0}
       collapsible={false}
     />
   );
