@@ -150,7 +150,11 @@ export default function Home() {
 
         {/* Image */}
         <div className="pb-6 ">
-          <img className="object-scale-down w-full h-full max-w-lg max-h-lg sm:hidden" src="/hero-image.png" alt="React" />
+          <img
+            className="object-scale-down w-full h-full max-w-lg pointer-events-none select-none max-h-lg sm:hidden"
+            src="/hero-image.png"
+            alt="React"
+          />
         </div>
 
         <section>
@@ -276,7 +280,11 @@ export default function Home() {
                 <ul className="grid grid-cols-2 row-gap-8 col-gap-4 mx-auto sm:grid-cols-4 md:col-gap-6 lg:max-w-5xl lg:col-gap-8 lg:row-gap-12 ">
                   <li>
                     <div className="space-y-4">
-                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/tai.png" alt="Picture of Tai" />
+                      <img
+                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
+                        src="/tai.png"
+                        alt="Picture of Tai"
+                      />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center pb-4 text-xs font-medium leading-4 md:pb-0 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Tai Nguyen</p>
@@ -292,7 +300,11 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/jeff.jpeg" alt="Picture of Jeffrey" />
+                      <img
+                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
+                        src="/jeff.jpeg"
+                        alt="Picture of Jeffrey"
+                      />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Jeffrey C. Lu</p>
@@ -308,7 +320,11 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/matt.jpeg" alt="Picture of Matt" />
+                      <img
+                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
+                        src="/matt.jpeg"
+                        alt="Picture of Matt"
+                      />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Matthew Batelic</p>
@@ -324,7 +340,11 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img className="w-20 h-20 mx-auto rounded-full lg:w-24 lg:h-24" src="/rob.jpeg" alt="Picture of Rob" />
+                      <img
+                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
+                        src="/rob.jpeg"
+                        alt="Picture of Rob"
+                      />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Robert Luo</p>
