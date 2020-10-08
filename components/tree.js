@@ -2,14 +2,21 @@ import Tree from 'react-d3-tree';
 import { useState } from 'react';
 import Link from 'next/link';
 
-const NodeLabel = ({ nodeData }) => (
-  <div className="flex flex-col items-center p-1 bg-white border rounded-md ">
+const NodeLabel = ({ nodeData }) => {
+  const stateLabels = [];
+  if (nodeData.component_state) {
+    for (const [key, value] of Object.entries(nodeData.component_state)) {
+      if (key === 'next') stateLabels.push(<p className="text-xs">{key}: {value}</p>)
+    }
+  }
+  return (<div className="flex flex-col items-center p-1 bg-white border rounded-md ">
     <p className="text-xs text-neutral-1000">
       Name: <span className="font-medium text-neutral-1000">{nodeData.name}</span>
     </p>
     <p className="text-xs">Time: {nodeData.self_base_duration && nodeData.self_base_duration.toFixed(2)}</p>
-  </div>
-);
+    {stateLabels}
+  </div>)
+};
 
 export default function TreeComponent({ treeData, apiUrl, id }) {
   const [xSpacing, setXSpacing] = useState(125);
@@ -44,7 +51,7 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
         pathFunc="diagonal"
         allowForeignObjects
         nodeLabelComponent={{
-          render: <NodeLabel className="bg-white" />,
+          render: <NodeLabel key={`${id}`} className="bg-white" />,
           foreignObjectWrapper: {
             width: 100,
             height: 100,
