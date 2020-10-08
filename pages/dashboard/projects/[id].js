@@ -1,3 +1,6 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable comma-dangle */
+/* eslint-disable function-paren-newline */
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -7,6 +10,7 @@ import isAuthorized from '../../../utils/is-authorized';
 import Nav from '../../../components/nav';
 import Breadcrumbs from '../../../components/breadcrumbs';
 import Layout from '../../../components/layout';
+
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 const TreeMenu = dynamic(() => import('../../../components/treemenu'), { ssr: false });
 
@@ -24,8 +28,8 @@ export default function Project() {
 
   useEffect(() => {
     (async () => {
-      const authorized = await isAuthorized();
-      if (!authorized.success) {
+      const isAuth = await isAuthorized();
+      if (!isAuth.success) {
         setAuthorized(false);
         router.push('/login');
       } else {
@@ -165,7 +169,7 @@ export default function Project() {
 
   return authorized && loaded ? (
     <Layout>
-      <Nav loggedIn={true}></Nav>
+      <Nav loggedIn />
       <Breadcrumbs text="> Project" />
       <div className="flex flex-col items-center bg-neutral-100 ">
         <div className="flex flex-col items-center p-10 ">
@@ -178,6 +182,6 @@ export default function Project() {
       </div>
     </Layout>
   ) : (
-    <Layout></Layout>
+    <Layout />
   );
 }
