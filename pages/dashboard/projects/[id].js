@@ -44,9 +44,13 @@ export default function Project() {
           credentials: 'include',
         });
 
-        const data = await resp.json();
+        let data = await resp.json();
 
         if (data.length) {
+          // sort all commits in ascending order based on the component_id
+          data.forEach((change) => {
+            return change.commits.sort((a, b) => a.component_id - b.component_id)
+          })
           setLoaded(true);
           setDataLength(data.length);
           setChanges(data);
