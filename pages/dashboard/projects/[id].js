@@ -13,6 +13,7 @@ const TreeMenu = dynamic(() => import('../../../components/treemenu'), { ssr: fa
 export default function Project() {
   const router = useRouter();
   const { id, name } = router.query;
+  const [authorized, setAuthorized] = useState(false);
   const [changes, setChanges] = useState([]);
   const [treeData, setTreeData] = useState([{}]);
   const [loaded, setLoaded] = useState(false);
@@ -22,8 +23,10 @@ export default function Project() {
     (async () => {
       const authorized = await isAuthorized();
       if (!authorized.success) {
-        setLoaded(false);
+        setAuthorized(false);
         router.push('/login');
+      } else {
+        setAuthorized(true);
       }
     })();
 
@@ -91,7 +94,7 @@ export default function Project() {
     setTreeData([result]);
   }, [changes, changeIndex]);
 
-  return loaded ? (
+  return authorized ? (
     <Layout>
       <Nav loggedIn="true"></Nav>
       <Breadcrumbs text="> Project" />
