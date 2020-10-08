@@ -7,7 +7,7 @@ export default function TreeComponent({ treeData }) {
       orientation="horizontal"
       transitionDuration={0}
       collapsible={false}
-      nodeSize={{ x: 100, y: 25}}
+      nodeSize={{ x: 100, y: 30}}
       translate={{ x: 200, y: 400 }}
       zoomable={true}
       styles={{
