@@ -93,7 +93,7 @@ export default function Login() {
           </form>
         </div>
         <p className="mt-8 text-sm text-primary-1000">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <Link href="/signup">
             <a className="font-medium text-indigo-600 hover:text-primary-1000">Sign Up</a>
           </Link>

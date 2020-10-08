@@ -127,8 +127,7 @@ export default function Home() {
             <div className="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
               <div className="text-center">
                 <h2 className="text-4xl font-extrabold leading-10 tracking-tight text-neutral-900 sm:text-5xl sm:leading-none md:text-6xl">
-                  Testing smarts for
-                  <br className="xl:hidden" />
+                  Testing smarts for <br className="xl:hidden" />
                   <span className="text-indigo-600">React applications</span>
                 </h2>
                 <p className="max-w-md mx-auto mt-3 text-base text-neutral-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">

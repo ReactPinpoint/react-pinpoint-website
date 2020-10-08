@@ -90,7 +90,7 @@ export default function Add() {
                     id="description"
                     rows="3"
                     className="block w-full transition duration-150 ease-in-out form-textarea sm:text-sm sm:leading-5"
-                  ></textarea>
+                  />
                   <p className="text-xs text-red-600">{errors.description && errors.description.message}</p>
                 </div>
               </div>
@@ -119,6 +119,6 @@ export default function Add() {
       </form>
     </Layout>
   ) : (
-    <Layout></Layout>
+    <Layout />
   );
 }

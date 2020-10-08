@@ -69,11 +69,11 @@ export default function Dashboard() {
     })();
   }, [loaded]);
 
-  const projectsList = projects.map((project, i) => <Project key={`project${i}`} project={project} />);
+  const projectsList = projects.map((project, i) => <Project tabIndex={i} key={`project-${project.project_id}`} project={project} />);
 
   return loaded ? (
     <Layout>
-      <Nav loggedIn={true}></Nav>
+      <Nav loggedIn />
       <Breadcrumbs />
       <main>
         <div className="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">

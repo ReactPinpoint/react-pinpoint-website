@@ -37,6 +37,7 @@ export default function SignUp() {
       }),
     })
       .then((res) => res.json())
+      // eslint-disable-next-line no-shadow
       .then((data) => {
         if (data && data.error) {
           if (data.error.startsWith('The password')) {

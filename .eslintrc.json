@@ -26,7 +26,18 @@
       }
     ],
     "jsx-a11y": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "react/jsx-one-expression-per-line": "off",
     "max-len": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "object-curly-newline": "off",
+    "consistent-return": "off"
   }
 }
