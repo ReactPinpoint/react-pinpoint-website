@@ -1,8 +1,7 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import Layout from '../components/layout';
 import Logo from '../components/logo';
-
-import { useState } from 'react';
 
 if (process.env.NODE_ENV !== 'production') console.log(`Currently in ${process.env.NODE_ENV} mode`);
 
@@ -98,7 +97,7 @@ export default function Home() {
             </div>
 
             {/* Hamburger Expanded */}
-            <div x-show="open" style={{ display: !hamburger ? `none` : `block` }} className="absolute inset-x-0 top-0 p-2 md:hidden">
+            <div x-show="open" style={{ display: !hamburger ? 'none' : 'block' }} className="absolute inset-x-0 top-0 p-2 md:hidden">
               <div className="transition origin-top-right transform rounded-lg shadow-md" x-show="open">
                 <div className="overflow-hidden bg-white rounded-lg shadow-xs">
                   <div className="flex items-center justify-end px-5 pt-4">
@@ -128,7 +127,8 @@ export default function Home() {
             <div className="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
               <div className="text-center">
                 <h2 className="text-4xl font-extrabold leading-10 tracking-tight text-neutral-900 sm:text-5xl sm:leading-none md:text-6xl">
-                  Testing smarts for <br className="xl:hidden" />
+                  Testing smarts for
+                  <br className="xl:hidden" />
                   <span className="text-indigo-600">React applications</span>
                 </h2>
                 <p className="max-w-md mx-auto mt-3 text-base text-neutral-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
@@ -280,11 +280,7 @@ export default function Home() {
                 <ul className="grid grid-cols-2 row-gap-8 col-gap-4 mx-auto sm:grid-cols-4 md:col-gap-6 lg:max-w-5xl lg:col-gap-8 lg:row-gap-12 ">
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
-                        src="/tai.png"
-                        alt="Picture of Tai"
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24" src="/tai.png" alt="Tai" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center pb-4 text-xs font-medium leading-4 md:pb-0 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Tai Nguyen</p>
@@ -303,7 +299,7 @@ export default function Home() {
                       <img
                         className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
                         src="/jeff.jpeg"
-                        alt="Picture of Jeffrey"
+                        alt="Jeffrey"
                       />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
@@ -320,11 +316,7 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
-                        src="/matt.jpeg"
-                        alt="Picture of Matt"
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24" src="/matt.jpeg" alt="Matt" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Matthew Batelic</p>
@@ -340,11 +332,7 @@ export default function Home() {
                   </li>
                   <li>
                     <div className="space-y-4">
-                      <img
-                        className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24"
-                        src="/rob.jpeg"
-                        alt="Picture of Rob"
-                      />
+                      <img className="w-20 h-20 mx-auto rounded-full pointer-events-none select-none lg:w-24 lg:h-24" src="/rob.jpeg" alt="Rob" />
                       <div className="space-y-2">
                         <div className="flex flex-col items-center text-xs font-medium leading-4 lg:text-sm lg:leading-5">
                           <p className="text-neutral-1000">Robert Luo</p>
@@ -372,13 +360,18 @@ export default function Home() {
               aria-label="React Pinpoint's GitHub Link"
               target="_blank"
             >
-              <button className="flex px-4 py-2 my-8 font-semibold bg-indigo-600 border rounded shadow border-neutral-400 focus:outline-none hover:bg-indigo-500 text-neutral-100">
+              <button
+                type="button"
+                className="flex px-4 py-2 my-8 font-semibold bg-indigo-600 border rounded shadow border-neutral-400 focus:outline-none hover:bg-indigo-500 text-neutral-100"
+              >
                 GitHub{' '}
                 <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path
                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
                     fill="#F0F4F8"
-                  ></path>
+                  >
+                    {}
+                  </path>
                 </svg>
               </button>
             </a>
