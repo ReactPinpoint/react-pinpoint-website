@@ -95,20 +95,24 @@ export default function Project() {
     <Layout>
       <Nav loggedIn="true"></Nav>
       <Breadcrumbs text="> Project" />
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center ">
         <div className="flex flex-col items-center p-10 ">
           <p className="pt-4 text-xl font-semibold leading-tight text-indigo-600">{name}</p>
           <p className="pt-4 text-lg font-medium leading-tight text-neutral-600">
             Your Project ID is: <span className="font-semibold text-indigo-600">{id}</span>
           </p>
           <p className="pt-4 text-lg font-medium leading-tight text-neutral-600"> Pass this ID to React Pinpoint.</p>
-          {loaded && (
-            <Link href={`${apiUrl}/api/commit/${id}`}>
-              <a>View project data in JSON format.</a>
-            </Link>
-          )}
         </div>
-
+        {loaded && (
+          <Link href={`${apiUrl}/api/commit/${id}`}>
+            <a
+              type="button"
+              className="self-end px-4 py-2 mx-auto mt-4 text-sm font-medium leading-5 text-white bg-indigo-600 border border-transparent rounded-md xl:mr-52 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700"
+            >
+              View project data in JSON format
+            </a>
+          </Link>
+        )}
         {loaded ? (
           <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border rounded">
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
