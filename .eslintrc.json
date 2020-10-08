@@ -11,7 +11,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "prettier"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
@@ -26,6 +26,7 @@
       }
     ],
     "jsx-a11y": "off",
-    "max-len": "off"
+    "max-len": "off",
+    "no-unused-vars": "off"
   }
 }
