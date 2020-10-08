@@ -17,7 +17,7 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
   const [orientation, setOrientation] = useState('horizontal');
   return (
     <div className="relative w-full">
-      <div className="absolute top-0 right-0 bg-white">
+      <div className="absolute top-0 right-0 transparent">
         <Link href={`${apiUrl}/api/commit/${id}`}>
           <a
             type="button"
@@ -44,7 +44,7 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
         pathFunc="diagonal"
         allowForeignObjects
         nodeLabelComponent={{
-          render: <NodeLabel className=".bg-white" />,
+          render: <NodeLabel className="bg-white" />,
           foreignObjectWrapper: {
             width: 100,
             height: 100,
@@ -53,10 +53,10 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
           },
         }}
       />
-      <div className="absolute bottom-0 right-0">
+      <div className="absolute bottom-0 right-0 my-2">
         <button
           type="button"
-          className="p-4"
+          className="px-2 py-2 mx-2 font-semibold bg-gray-200 border-b-4 border-gray-500 rounded focus:outline-none text-primary-1000 hover:border-b-2 hover:border-t-2 hover:border-gray-400"
           onClick={() => {
             if (orientation === 'horizontal') return setOrientation('vertical');
             return setOrientation('horizontal');
@@ -64,24 +64,32 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
         >
           Change Orientation
         </button>
-        <button type="button" className="p-4" onClick={() => setXSpacing(xSpacing + 10)}>
+        <button
+          type="button"
+          className="px-4 py-2 mx-2 font-semibold bg-gray-200 border-b-4 border-gray-500 rounded focus:outline-none text-primary-1000 hover:border-b-2 hover:border-t-2 hover:border-gray-400"
+          onClick={() => setXSpacing(xSpacing + 10)}
+        >
           X Spacing +
         </button>
         <button
           type="button"
-          className="p-4"
+          className="px-4 py-2 mx-2 font-semibold bg-gray-200 border-b-4 border-gray-500 rounded focus:outline-none text-primary-1000 hover:border-b-2 hover:border-t-2 hover:border-gray-400"
           onClick={() => {
             if (xSpacing >= 10) return setXSpacing(xSpacing - 10);
           }}
         >
           X Spacing -
         </button>
-        <button type="button" className="p-4" onClick={() => setYSpacing(ySpacing + 10)}>
+        <button
+          type="button"
+          className="px-4 py-2 mx-2 font-semibold bg-gray-200 border-b-4 border-gray-500 rounded focus:outline-none text-primary-1000 hover:border-b-2 hover:border-t-2 hover:border-gray-400"
+          onClick={() => setYSpacing(ySpacing + 10)}
+        >
           Y Spacing +
         </button>
         <button
           type="button"
-          className="p-4"
+          className="px-4 py-2 mx-2 font-semibold bg-gray-200 border-b-4 border-gray-500 rounded focus:outline-none text-primary-1000 hover:border-b-2 hover:border-t-2 hover:border-gray-400"
           onClick={() => {
             if (ySpacing >= 20) return setYSpacing(ySpacing - 10);
           }}
