@@ -18,7 +18,9 @@ export default function Project() {
   const [treeData, setTreeData] = useState([{}]);
   const [loaded, setLoaded] = useState(false);
   const [changeIndex, setChangeIndex] = useState(0);
+
   const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
+
   useEffect(() => {
     (async () => {
       const authorized = await isAuthorized();
@@ -36,7 +38,9 @@ export default function Project() {
           method: 'GET',
           credentials: 'include',
         });
+
         const data = await resp.json();
+
         if (data.length) {
           setLoaded(true);
           setChanges(data);
@@ -100,6 +104,71 @@ export default function Project() {
     setTreeData([result]);
   }, [changes, changeIndex]);
 
+  const treeDisplay = (
+    <>
+      <Link href={`${apiUrl}/api/commit/${id}`}>
+        <a
+          type="button"
+          className="flex items-center self-center px-2 py-3 mt-4 mr-4 text-sm font-medium leading-6 text-transparent transition duration-150 ease-in-out bg-white border-2 rounded-md border-neutral-500 text-neutral-700 hover:text-neutral-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-neutral-800 active:bg-neutral-100"
+        >
+          View project data in JSON format
+        </a>
+      </Link>
+      <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
+        <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
+        <Tree treeData={treeData} />
+      </div>
+    </>
+  );
+
+  const stepsDisplay = (
+    <div>
+      <ul className="max-w-lg overflow-hidden">
+        <li className="relative md:flex-1 md:flex">
+          <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+            <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+              <p className="text-indigo-600">01</p>
+            </div>
+            <p className="text-sm font-medium leading-5 text-indigo-600">
+              Install react-pinpoint using npm: <br />
+              <code className="p-1 rounded-sm bg-neutral-200 text-neutral-1000">npm install -D react-pinpoint</code>
+            </p>
+          </div>
+        </li>
+        <li className="relative md:flex-1 md:flex">
+          <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+            <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+              <p className="text-indigo-600">02</p>
+            </div>
+            <p className="text-sm font-medium leading-5 text-indigo-600">
+              Invoke <code className="p-1 bg-neutral-200 text-neutral-1000">mountToReactRoot</code> and pass the project ID as the second argument in
+              your React project’s entry file <br />
+              <code className="p-1 bg-neutral-200 text-neutral-1000">mountToReactRoot(rootDom, projectID)</code>
+            </p>
+          </div>
+        </li>
+        <li className="relative md:flex-1 md:flex">
+          <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+            <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+              <p className="text-indigo-600">03</p>
+            </div>
+            <p className="text-sm font-medium leading-5 text-indigo-600">
+              Interact with your app and data will be sent to React Pinpoint website here.
+            </p>
+          </div>
+        </li>
+        <li className="relative md:flex-1 md:flex">
+          <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
+            <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
+              <p className="text-indigo-600">04</p>
+            </div>
+            <p className="text-sm font-medium leading-5 text-indigo-600">Refresh this page and see your data displayed!</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
+
   return authorized ? (
     <Layout>
       <Nav loggedIn={true}></Nav>
@@ -111,71 +180,7 @@ export default function Project() {
             Your project ID is: <span className="font-semibold text-indigo-600">{id}</span>
           </p>
         </div>
-        {loaded && (
-          <Link href={`${apiUrl}/api/commit/${id}`}>
-            <a
-              type="button"
-              className="flex items-center self-center px-2 py-3 mt-4 mr-4 text-sm font-medium leading-6 text-transparent transition duration-150 ease-in-out bg-white border-2 rounded-md border-neutral-500 text-neutral-700 hover:text-neutral-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-neutral-800 active:bg-neutral-100"
-            >
-              View project data in JSON format
-            </a>
-          </Link>
-        )}
-
-        {loaded ? (
-          <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
-            <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
-            <Tree treeData={treeData} />
-          </div>
-        ) : loaded ? (
-          <div>
-            <ul className="max-w-lg overflow-hidden">
-              <li className="relative md:flex-1 md:flex">
-                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
-                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
-                    <p className="text-indigo-600">01</p>
-                  </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Install react-pinpoint using npm: <br />
-                    <code className="p-1 rounded-sm bg-neutral-200 text-neutral-1000">npm install -D react-pinpoint</code>
-                  </p>
-                </div>
-              </li>
-              <li className="relative md:flex-1 md:flex">
-                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
-                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
-                    <p className="text-indigo-600">02</p>
-                  </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Invoke <code className="p-1 bg-neutral-200 text-neutral-1000">mountToReactRoot</code> and pass the project ID as the second
-                    argument in your React project’s entry file <br />
-                    <code className="p-1 bg-neutral-200 text-neutral-1000">mountToReactRoot(rootDom, projectID)</code>
-                  </p>
-                </div>
-              </li>
-              <li className="relative md:flex-1 md:flex">
-                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
-                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
-                    <p className="text-indigo-600">03</p>
-                  </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Interact with your app and data will be sent to React Pinpoint website here.
-                  </p>
-                </div>
-              </li>
-              <li className="relative md:flex-1 md:flex">
-                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
-                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
-                    <p className="text-indigo-600">04</p>
-                  </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">Refresh this page and see your data displayed!</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          <Layout />
-        )}
+        {loaded ? treeDisplay : stepsDisplay}
       </div>
     </Layout>
   ) : (
