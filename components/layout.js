@@ -10,7 +10,7 @@ export default function Layout({ children, title = 'React Pinpoint' }) {
           data-n-head="true"
           data-hid="description"
           name="description"
-          content="React Pinpoint is a utility testing library to pinpoint slow React components."
+          content="React Pinpoint is an open source utility library for measuring React component render times."
         />
         <title>{title}</title>
       </Head>
