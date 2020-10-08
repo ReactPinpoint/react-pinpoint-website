@@ -109,20 +109,10 @@ export default function Project() {
   }, [changes, changeIndex]);
 
   const treeDisplay = (
-    <>
-      <Link href={`${apiUrl}/api/commit/${id}`}>
-        <a
-          type="button"
-          className="flex items-center self-center px-2 py-3 mt-4 mr-4 text-sm font-medium leading-6 text-transparent transition duration-150 ease-in-out bg-white border-2 rounded-md border-neutral-500 text-neutral-700 hover:text-neutral-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-neutral-800 active:bg-neutral-100"
-        >
-          View project data in JSON format
-        </a>
-      </Link>
-      <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
-        <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
-        <Tree treeData={treeData} />
-      </div>
-    </>
+    <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
+      <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
+      <Tree treeData={treeData} apiUrl={apiUrl} id={id} />
+    </div>
   );
 
   const stepsDisplay = (
