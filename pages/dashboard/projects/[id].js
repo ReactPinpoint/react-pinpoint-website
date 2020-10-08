@@ -58,7 +58,7 @@ export default function Project() {
     changes[changeIndex].commits.forEach((item) =>
       componentMap.set(item.component_id, {
         ...item,
-        name: item.component_id, // name could be anything to display on d3
+        name: item.component_name, // name could be anything to display on d3
       })
     );
     // picking just the first change and the first commit to start
@@ -71,19 +71,28 @@ export default function Project() {
       for (let i = 0; i < arr.length; i++) {
         const component = componentMap.get(arr[i]);
         if (component.children_ids.length > 0) {
-          // compState is used to populate the attributes of the node on the tree
-          let compState = {};
-          if (component.component_state) {
-            for (let key in component.component_state) {
-              compState[key] = `${component.component_state[key]}`;
-            }
-          } else {
-            compState = null;
-          }
-          component.attributes = compState;
-          component.attributes = { ...component.attributes, time: component.self_base_duration.toFixed(2) };
           component.children = populateChild(component.children_ids);
+          // var h = 
+          // return `hsl(" + (1.0 - ${omponent.self_base_duration}) * 240 + ", 100%, 50%)`;
         }
+        // compState is used to populate the attributes of the node on the tree
+        let compState = {};
+        if (component.component_state) {
+          for (let key in component.component_state) {
+            compState[key] = `${component.component_state[key]}`;
+          }
+        } else {
+          compState = null;
+        }
+        component.attributes = compState;
+        component.attributes = { ...component.attributes, time: component.self_base_duration.toFixed(2) };
+        component.nodeSvgShape = {
+          shape: 'circle',
+          shapeProps: {
+            r: 10,
+            fill: `hsl(${(1.0 - Math.min(1.0, component.self_base_duration)) * 240}, 100%, 50%)`
+          },
+        };
         resultArr.push(component);
       }
       return resultArr;
@@ -129,7 +138,9 @@ export default function Project() {
                   <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
                     <p className="text-indigo-600">01</p>
                   </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">Iusto et officia maiores porro ad non quas.</p>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">
+                    Download ReactPinpoint with npm <code>npm install -D react-pinpoint</code>
+                  </p>
                 </div>
               </li>
               <li className="relative md:flex-1 md:flex">
@@ -138,7 +149,7 @@ export default function Project() {
                     <p className="text-indigo-600">02</p>
                   </div>
                   <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
+                    Invoke <code>mountToReactRoot</code> and pass the project ID as the second argument in your React project’s entry file <code>mountToReactRoot(rootDom, projectID)</code>
                   </p>
                 </div>
               </li>
@@ -148,7 +159,7 @@ export default function Project() {
                     <p className="text-indigo-600">03</p>
                   </div>
                   <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Iusto et officia usto et officia maioresusto et officia maiores porro ad non quasmaiores
+                    Interact with your app and data will be sent to React Pinpoint website here.
                   </p>
                 </div>
               </li>
@@ -158,17 +169,7 @@ export default function Project() {
                     <p className="text-indigo-600">04</p>
                   </div>
                   <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Iusto et officia maiores porro ad non usto et officia maioresusto et officia maiores quasmaiores
-                  </p>
-                </div>
-              </li>
-              <li className="relative md:flex-1 md:flex">
-                <div className="flex items-center px-6 py-4 space-x-4 text-sm font-medium leading-5">
-                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
-                    <p className="text-indigo-600">05</p>
-                  </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Iusto et officia maiores porro usto et officia maiores ad non quasmaiores
+                    Refresh this page and see your data displayed!
                   </p>
                 </div>
               </li>
