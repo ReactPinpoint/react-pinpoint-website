@@ -102,9 +102,9 @@ export default function Project() {
 
   return authorized ? (
     <Layout>
-      <Nav loggedIn="true"></Nav>
+      <Nav loggedIn={true}></Nav>
       <Breadcrumbs text="> Project" />
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center bg-neutral-100 ">
         <div className="flex flex-col items-center p-10 ">
           <p className="pt-4 text-xl font-semibold leading-tight text-indigo-600">{name}</p>
           <p className="pt-4 text-lg font-medium leading-tight text-neutral-700">
@@ -122,7 +122,7 @@ export default function Project() {
           </Link>
         )}
         {loaded ? (
-          <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border rounded">
+          <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
             <Tree treeData={treeData} />
           </div>
