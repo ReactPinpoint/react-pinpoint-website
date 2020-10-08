@@ -10,74 +10,23 @@ import Layout from '../../../components/layout';
 const Tree = dynamic(() => import('../../../components/tree'), { ssr: false });
 const TreeMenu = dynamic(() => import('../../../components/treemenu'), { ssr: false });
 
-// const Commit = ({ commit }) => {
-//   const { component_id, component_name, self_base_duration, parent_component_id, component_state, sibling_component_id, children_ids } = commit;
-//   return (
-//     <div className="m-4 border-2">
-//       <p>Component id: {component_id}</p>
-//       <p>Component name: {component_name}</p>
-//       <p>Self base duration: {self_base_duration}</p>
-//       <p>Parent component id: {parent_component_id}</p>
-//       <p>Component state: {JSON.stringify(component_state)}</p>
-//       <p>Sibling component id: {sibling_component_id}</p>
-//       <p>Children ids: {JSON.stringify(children_ids)}</p>
-//     </div>
-//   );
-// };
-
-// const Change = ({ change }) => {
-//   const { change_id, commits } = change;
-//   const commitsList = commits.map((commit, i) => <Commit key={`Key${i}`} commit={commit} />);
-//   return (
-//     <div className="mt-8 mb-8 border-2">
-//       <h2>Change {change_id}</h2>
-//       {commitsList}
-//     </div>
-//   );
-// };
-
-// const myTreeData = [
-//   {
-//     name: 'root',
-//     attributes: {
-//       keyA: 'val A',
-//       keyB: 'val B',
-//       keyC: 'val C',
-//     },
-//     children: [
-//       {
-//         name: 'Level 2: A',
-//         attributes: {
-//           keyA: 'val A',
-//           keyB: 'val B',
-//           keyC: 'val C',
-//         },
-//       },
-//       {
-//         name: 'Level 2: B',
-//         attributes: {
-//           keyA: 'val A',
-//           keyB: 'val B',
-//           keyC: 'val C',
-//         },
-//       },
-//     ],
-//   },
-// ];
-
 export default function Project() {
   const router = useRouter();
   const { id, name } = router.query;
   const [changes, setChanges] = useState([]);
-  const [treeData, setTreeData] = useState([
-    {
-      name: 'empty for now',
-    },
-  ]);
+  const [treeData, setTreeData] = useState([{}]);
   const [loaded, setLoaded] = useState(false);
   const [changeIndex, setChangeIndex] = useState(0);
   const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
   useEffect(() => {
+    (async () => {
+      const authorized = await isAuthorized();
+      if (!authorized.success) {
+        setLoaded(false);
+        router.push('/login');
+      }
+    })();
+
     const request = async () => {
       try {
         const resp = await fetch(`${apiUrl}/api/commit/${id}`, {
@@ -142,7 +91,7 @@ export default function Project() {
     setTreeData([result]);
   }, [changes, changeIndex]);
 
-  return (
+  return loaded ? (
     <Layout>
       <Nav loggedIn="true"></Nav>
       <Breadcrumbs text="> Project" />
@@ -221,5 +170,7 @@ export default function Project() {
         )}
       </div>
     </Layout>
+  ) : (
+    <Layout></Layout>
   );
 }
