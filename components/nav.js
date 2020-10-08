@@ -1,7 +1,8 @@
-import { Router, useRouter } from 'next/router';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-import Logo from '../components/logo';
+import Logo from './logo';
 
 export default function Nav({ ...props }) {
   const router = useRouter();
@@ -25,8 +26,8 @@ export default function Nav({ ...props }) {
     <nav
       className={
         loggedIn
-          ? `flex flex-col items-center justify-between py-4 md:pl-8 md:pr-64 lg:flex-row bg-white`
-          : `flex flex-col items-center justify-between py-4 md:px-64 lg:flex-row bg-primary-100`
+          ? 'flex flex-col items-center justify-between py-4 md:pl-8 md:pr-64 lg:flex-row bg-white'
+          : 'flex flex-col items-center justify-between py-4 md:px-64 lg:flex-row bg-primary-100'
       }
     >
       <div className="flex items-center flex-shrink-0 mr-6 text-neutral-1000">

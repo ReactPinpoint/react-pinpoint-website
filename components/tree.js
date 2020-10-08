@@ -2,21 +2,19 @@ import Tree from 'react-d3-tree';
 import { useState } from 'react';
 import Link from 'next/link';
 
-const NodeLabel = ({ nodeData }) => {
-  return (
-    <div className="flex flex-col items-center p-1 bg-white border rounded-md ">
-      <p className="text-xs text-neutral-1000">
-        Name: <span className="font-medium text-neutral-1000">{nodeData.name}</span>
-      </p>
-      <p className="text-xs">Time: {nodeData.self_base_duration && nodeData.self_base_duration.toFixed(2)}</p>
-    </div>
-  );
-};
+const NodeLabel = ({ nodeData }) => (
+  <div className="flex flex-col items-center p-1 bg-white border rounded-md ">
+    <p className="text-xs text-neutral-1000">
+      Name: <span className="font-medium text-neutral-1000">{nodeData.name}</span>
+    </p>
+    <p className="text-xs">Time: {nodeData.self_base_duration && nodeData.self_base_duration.toFixed(2)}</p>
+  </div>
+);
 
 export default function TreeComponent({ treeData, apiUrl, id }) {
   const [xSpacing, setXSpacing] = useState(125);
   const [ySpacing, setYSpacing] = useState(50);
-  const [orientation, setOrientation] = useState("horizontal");
+  const [orientation, setOrientation] = useState('horizontal');
   return (
     <div className="relative w-full">
       <div className="absolute top-0 right-0 bg-white">
@@ -34,9 +32,9 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
         orientation={orientation}
         transitionDuration={0}
         collapsible={false}
-        nodeSize={{ x: xSpacing, y: ySpacing}}
+        nodeSize={{ x: xSpacing, y: ySpacing }}
         translate={{ x: 200, y: 400 }}
-        zoomable={true}
+        zoomable
         styles={{
           links: {
             stroke: '#5850ec',
@@ -44,7 +42,7 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
           },
         }}
         pathFunc="diagonal"
-        allowForeignObjects={true}
+        allowForeignObjects
         nodeLabelComponent={{
           render: <NodeLabel className=".bg-white" />,
           foreignObjectWrapper: {
@@ -56,14 +54,40 @@ export default function TreeComponent({ treeData, apiUrl, id }) {
         }}
       />
       <div className="absolute bottom-0 right-0">
-        <button className="p-4" onClick={() => {
-          if (orientation === "horizontal") return setOrientation("vertical");
-          else return setOrientation("horizontal")
-        }}>Change Orientation</button>
-        <button className="p-4" onClick={() => setXSpacing(xSpacing + 10)}>X Spacing +</button>
-        <button className="p-4" onClick={() => {if (xSpacing >= 10) return setXSpacing(xSpacing - 10)}}>X Spacing -</button>
-        <button className="p-4" onClick={() => setYSpacing(ySpacing + 10)}>Y Spacing +</button>
-        <button className="p-4" onClick={() => {if (ySpacing >= 20) return setYSpacing(ySpacing - 10)}}>Y Spacing -</button>
+        <button
+          type="button"
+          className="p-4"
+          onClick={() => {
+            if (orientation === 'horizontal') return setOrientation('vertical');
+            return setOrientation('horizontal');
+          }}
+        >
+          Change Orientation
+        </button>
+        <button type="button" className="p-4" onClick={() => setXSpacing(xSpacing + 10)}>
+          X Spacing +
+        </button>
+        <button
+          type="button"
+          className="p-4"
+          onClick={() => {
+            if (xSpacing >= 10) return setXSpacing(xSpacing - 10);
+          }}
+        >
+          X Spacing -
+        </button>
+        <button type="button" className="p-4" onClick={() => setYSpacing(ySpacing + 10)}>
+          Y Spacing +
+        </button>
+        <button
+          type="button"
+          className="p-4"
+          onClick={() => {
+            if (ySpacing >= 20) return setYSpacing(ySpacing - 10);
+          }}
+        >
+          Y Spacing -
+        </button>
       </div>
     </div>
   );

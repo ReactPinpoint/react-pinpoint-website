@@ -9,7 +9,7 @@ export default function Breadcrumbs({ text = '' }) {
             <span className="hover:underline ">Dashboard</span>
           </a>
         </Link>
-        <span className="text-2xl font-bold leading-tight text-neutral-900">{' ' + text}</span>
+        <span className="text-2xl font-bold leading-tight text-neutral-900">{` ${text}`}</span>
       </div>
     </header>
   );
