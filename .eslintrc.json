@@ -1,25 +1,25 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": ["react", "prettier"],
-    "rules": {
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": "off",
-        "jsx-a11y/anchor-is-valid": "off",
-        "max-len": "off",
-        "prettier/prettier": ["error"]
-    },
-    "globals": {
-        "React": "writable"
-    }
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "max-len": "off",
+    "prettier/prettier": ["error"]
+  },
+  "globals": {
+    "React": "writable"
+  }
 }
