@@ -16,6 +16,7 @@ export default function Project() {
   const [authorized, setAuthorized] = useState(false);
   const [changes, setChanges] = useState([]);
   const [treeData, setTreeData] = useState([{}]);
+  const [dataLength, setDataLength] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [changeIndex, setChangeIndex] = useState(0);
 
@@ -43,7 +44,10 @@ export default function Project() {
 
         if (data.length) {
           setLoaded(true);
+          setDataLength(data.length);
           setChanges(data);
+        } else {
+          setLoaded(true);
         }
       } catch (err) {
         console.log(err);
@@ -169,7 +173,7 @@ export default function Project() {
     </div>
   );
 
-  return authorized ? (
+  return authorized && loaded ? (
     <Layout>
       <Nav loggedIn={true}></Nav>
       <Breadcrumbs text="> Project" />
@@ -180,7 +184,7 @@ export default function Project() {
             Your project ID is: <span className="font-semibold text-indigo-600">{id}</span>
           </p>
         </div>
-        {loaded ? treeDisplay : stepsDisplay}
+        {dataLength ? treeDisplay : stepsDisplay}
       </div>
     </Layout>
   ) : (
