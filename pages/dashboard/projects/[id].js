@@ -34,7 +34,7 @@ export default function Project() {
           credentials: 'include',
         });
         const data = await resp.json();
-        console.log('data ->', data);
+        // console.log('data ->', data);
         if (data.length) {
           setLoaded(true);
           setChanges(data);
@@ -63,7 +63,6 @@ export default function Project() {
     // to start with recursive calls.
     const result = changes[changeIndex].commits[0];
     result.name = 'root';
-    // console.log('RESULT', result);
     function populateChild(arr) {
       const resultArr = [];
       for (let i = 0; i < arr.length; i++) {
@@ -79,6 +78,7 @@ export default function Project() {
             compState = null;
           }
           component.attributes = compState;
+          component.attributes = { ...component.attributes, time: component.self_base_duration.toFixed(2) };
           component.children = populateChild(component.children_ids);
         }
         resultArr.push(component);
