@@ -190,7 +190,7 @@ export default function Home() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Extract React Fiber Data</h4>
                         <p className="mt-2 text-base leading-6 text-neutral-700">
-                          React Pinpoint extracts data from React Fiber to help you analyze performance of individual fibers. React Fiber is the
+                          React Pinpoint hooks into React Fiber architecture to help you analyze performance of individual fibers. React Fiber is the
                           internal data structure that React uses to reconcile before updating the DOM.
                         </p>
                       </div>
@@ -214,9 +214,9 @@ export default function Home() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Serialization</h4>
                         <p className="mt-2 text-base leading-6 text-neutral-700">
-                          You will have access to serialized data that can help you develop other tools such as visualization, chrome extensions,
-                          analytics, time travel debugger, etc. React Pinpoint preserves the original structure of React Fiber tree in a 1-dimensional
-                          array and allows you to reconstruct the tree structure when needed.
+                          React Pinpoint gives you access to serialized data that you can use in the development of other tools and workflows such as
+                          custom Chrome extensions, data analysis, visualization, and time-travel debugging. React Pinpoint preserves the original
+                          structure of React Fiber in a one-dimensional array and allows you to reconstruct structure when needed.
                         </p>
                       </div>
                     </div>
@@ -239,8 +239,8 @@ export default function Home() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Automated Testing</h4>
                         <p className="mt-2 text-base leading-6 text-neutral-700">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                          blanditiis ratione.
+                          React Pinpoint provides automated testing against your code. You can optionally opt in to run your tests. This will increase
+                          the depth and scope of tests to help improve the quality of your application.
                         </p>
                       </div>
                     </div>
@@ -258,8 +258,8 @@ export default function Home() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium leading-6 text-neutral-900">Identify State Changes</h4>
                         <p className="mt-2 text-base leading-6 text-neutral-700">
-                          With React Pinpoint, you can see exactly what has changed every time React Fiber commits or renders allowing you to see how
-                          performant they are and helping you develop better React code.
+                          With React Pinpoint, you can see exactly what has changed every time React Fiber commits or renders, allowing you to see how
+                          performant they are, helping you develop better React code.
                         </p>
                       </div>
                     </div>
