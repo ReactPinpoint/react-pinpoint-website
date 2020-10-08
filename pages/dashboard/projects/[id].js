@@ -45,13 +45,11 @@ export default function Project() {
           credentials: 'include',
         });
 
-        let data = await resp.json();
+        const data = await resp.json();
 
         if (data.length) {
           // sort all commits in ascending order based on the component_id
-          data.forEach((change) => {
-            return change.commits.sort((a, b) => a.component_id - b.component_id);
-          });
+          data.forEach((change) => change.commits.sort((a, b) => a.component_id - b.component_id));
           setLoaded(true);
           setDataLength(data.length);
           setChanges(data);
@@ -92,9 +90,9 @@ export default function Project() {
         // compState is used to populate the attributes of the node on the tree
         let compState = {};
         if (component.component_state) {
-          for (let key in component.component_state) {
+          Object.keys(component.component_state).forEach((key) => {
             compState[key] = `${component.component_state[key]}`;
-          }
+          });
         } else {
           compState = null;
         }
@@ -126,7 +124,7 @@ export default function Project() {
 
   const treeDisplay = (
     <div className="flex flex-row w-3/4 mx-auto my-4 bg-white border-4 rounded-lg h-95 border-neutral-700">
-      <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
+      <TreeMenu changes={changes} setChangeIndex={setChangeIndex} changeIndex={changeIndex} />
       <Tree treeData={treeData} apiUrl={apiUrl} id={id} />
     </div>
   );
