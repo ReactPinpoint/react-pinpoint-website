@@ -37,7 +37,6 @@ export default function Project() {
           credentials: 'include',
         });
         const data = await resp.json();
-        // console.log('data ->', data);
         if (data.length) {
           setLoaded(true);
           setChanges(data);
@@ -72,8 +71,6 @@ export default function Project() {
         const component = componentMap.get(arr[i]);
         if (component.children_ids.length > 0) {
           component.children = populateChild(component.children_ids);
-          // var h = 
-          // return `hsl(" + (1.0 - ${omponent.self_base_duration}) * 240 + ", 100%, 50%)`;
         }
         // compState is used to populate the attributes of the node on the tree
         let compState = {};
@@ -90,7 +87,7 @@ export default function Project() {
           shape: 'circle',
           shapeProps: {
             r: 10,
-            fill: `hsl(${(1.0 - Math.min(1.0, component.self_base_duration)) * 240}, 100%, 50%)`
+            fill: `hsl(${(1.0 - Math.min(1.0, component.self_base_duration)) * 240}, 100%, 50%)`,
           },
         };
         resultArr.push(component);
@@ -110,10 +107,9 @@ export default function Project() {
       <div className="flex flex-col items-center ">
         <div className="flex flex-col items-center p-10 ">
           <p className="pt-4 text-xl font-semibold leading-tight text-indigo-600">{name}</p>
-          <p className="pt-4 text-lg font-medium leading-tight text-neutral-600">
-            Your Project ID is: <span className="font-semibold text-indigo-600">{id}</span>
+          <p className="pt-4 text-lg font-medium leading-tight text-neutral-700">
+            Your project ID is: <span className="font-semibold text-indigo-600">{id}</span>
           </p>
-          <p className="pt-4 text-lg font-medium leading-tight text-neutral-600"> Pass this ID to React Pinpoint.</p>
         </div>
         {loaded && (
           <Link href={`${apiUrl}/api/commit/${id}`}>
@@ -130,7 +126,7 @@ export default function Project() {
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
             <Tree treeData={treeData} />
           </div>
-        ) : (
+        ) : loaded ? (
           <div>
             <ul className="max-w-lg overflow-hidden">
               <li className="relative md:flex-1 md:flex">
@@ -139,7 +135,8 @@ export default function Project() {
                     <p className="text-indigo-600">01</p>
                   </div>
                   <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Download ReactPinpoint with npm <code>npm install -D react-pinpoint</code>
+                    Install react-pinpoint using npm: <br />
+                    <code className="p-1 rounded-sm bg-neutral-200 text-neutral-1000">npm install -D react-pinpoint</code>
                   </p>
                 </div>
               </li>
@@ -149,7 +146,9 @@ export default function Project() {
                     <p className="text-indigo-600">02</p>
                   </div>
                   <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Invoke <code>mountToReactRoot</code> and pass the project ID as the second argument in your React project’s entry file <code>mountToReactRoot(rootDom, projectID)</code>
+                    Invoke <code className="p-1 bg-neutral-200 text-neutral-1000">mountToReactRoot</code> and pass the project ID as the second
+                    argument in your React project’s entry file <br />
+                    <code className="p-1 bg-neutral-200 text-neutral-1000">mountToReactRoot(rootDom, projectID)</code>
                   </p>
                 </div>
               </li>
@@ -168,13 +167,13 @@ export default function Project() {
                   <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 border-2 border-indigo-600 rounded-full">
                     <p className="text-indigo-600">04</p>
                   </div>
-                  <p className="text-sm font-medium leading-5 text-indigo-600">
-                    Refresh this page and see your data displayed!
-                  </p>
+                  <p className="text-sm font-medium leading-5 text-indigo-600">Refresh this page and see your data displayed!</p>
                 </div>
               </li>
             </ul>
           </div>
+        ) : (
+          <Layout />
         )}
       </div>
     </Layout>
