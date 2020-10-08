@@ -3,8 +3,8 @@
 /* eslint-disable function-paren-newline */
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import isAuthorized from '../../../utils/is-authorized';
 
 import Nav from '../../../components/nav';
@@ -23,6 +23,7 @@ export default function Project() {
   const [dataLength, setDataLength] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [changeIndex, setChangeIndex] = useState(0);
+  const [copied, setCopy] = useState(false);
 
   const apiUrl = process.env.NODE_ENV !== 'development' ? process.env.API_URL_PROD : process.env.API_URL_DEV;
 
@@ -49,8 +50,8 @@ export default function Project() {
         if (data.length) {
           // sort all commits in ascending order based on the component_id
           data.forEach((change) => {
-            return change.commits.sort((a, b) => a.component_id - b.component_id)
-          })
+            return change.commits.sort((a, b) => a.component_id - b.component_id);
+          });
           setLoaded(true);
           setDataLength(data.length);
           setChanges(data);
@@ -116,6 +117,13 @@ export default function Project() {
     setTreeData([result]);
   }, [changes, changeIndex]);
 
+  const onCopy = () => {
+    setCopy(true);
+    setTimeout(() => {
+      setCopy(false);
+    }, 3000);
+  };
+
   const treeDisplay = (
     <div className="flex flex-row w-3/4 mx-auto my-4 bg-white border-4 rounded-lg h-95 border-neutral-700">
       <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
@@ -171,15 +179,51 @@ export default function Project() {
     </div>
   );
 
+  const copiedAlert = (
+    <div className="absolute p-4 bg-transparent rounded-md top-2/12 bg-green-50">
+      <div className="flex">
+        <div className="flex-shrink-0">
+          <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </div>
+        <div className="ml-3">
+          <p className="text-sm font-medium leading-5 text-green-800">Success! Project ID has been copied to clipboard.</p>
+        </div>
+      </div>
+    </div>
+  );
+
   return authorized && loaded ? (
     <Layout>
       <Nav loggedIn />
       <Breadcrumbs text="> Project" />
       <div className="flex flex-col items-center bg-neutral-100 ">
         <div className="flex flex-col items-center p-10 ">
+          {copied ? copiedAlert : null}
           <p className="pt-4 text-xl font-semibold leading-tight text-indigo-600">{name}</p>
           <p className="pt-4 text-lg font-medium leading-tight text-neutral-700">
-            Your project ID is: <span className="font-semibold text-indigo-600">{id}</span>
+            Your project ID is: <span className="font-semibold text-indigo-600">{id} </span>
+            <CopyToClipboard onCopy={onCopy} text={id}>
+              <svg
+                className="inline-block w-5 h-5 cursor-pointer text-neutral-700 hover:text-neutral-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
+              </svg>
+            </CopyToClipboard>
           </p>
         </div>
         {dataLength ? treeDisplay : stepsDisplay}

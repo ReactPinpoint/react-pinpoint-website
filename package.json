@@ -12,6 +12,7 @@
     "next": "^9.5.4",
     "next-cookies": "^2.0.3",
     "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-d3-tree": "^1.16.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.2"
