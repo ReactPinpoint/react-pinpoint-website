@@ -115,12 +115,13 @@ export default function Project() {
           <Link href={`${apiUrl}/api/commit/${id}`}>
             <a
               type="button"
-              className="self-end px-4 py-2 mx-auto mt-4 text-sm font-medium leading-5 text-white bg-indigo-600 border border-transparent rounded-md xl:mr-52 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700"
+              className="flex items-center self-center px-2 py-3 mt-4 mr-4 text-sm font-medium leading-6 text-transparent transition duration-150 ease-in-out bg-white border-2 rounded-md border-neutral-500 text-neutral-700 hover:text-neutral-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-neutral-800 active:bg-neutral-100"
             >
               View project data in JSON format
             </a>
           </Link>
         )}
+
         {loaded ? (
           <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
             <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
