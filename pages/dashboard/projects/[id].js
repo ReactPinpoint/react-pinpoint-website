@@ -113,7 +113,7 @@ export default function Project() {
   }, [changes, changeIndex]);
 
   const treeDisplay = (
-    <div className="flex flex-row w-3/4 h-screen mx-auto my-4 bg-white border-4 rounded-lg border-neutral-700">
+    <div className="flex flex-row w-3/4 mx-auto my-4 bg-white border-4 rounded-lg h-95 border-neutral-700">
       <TreeMenu changes={changes} setChangeIndex={setChangeIndex} />
       <Tree treeData={treeData} apiUrl={apiUrl} id={id} />
     </div>

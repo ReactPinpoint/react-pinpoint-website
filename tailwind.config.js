@@ -73,10 +73,11 @@ module.exports = {
           1000: '#513C06',
         },
       },
-    },
-    height: {
-      80: '80vh',
-      90: '90vh',
+      height: {
+        80: '80vh',
+        90: '90vh',
+        95: '95vh',
+      },
     },
   },
   variants: {
