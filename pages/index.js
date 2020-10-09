@@ -292,7 +292,7 @@ export default function Home() {
                   Your Components, Visualized
                 </h4>
                 <p className="mt-3 text-lg leading-7 text-neutral-700">
-                  React Pinpoint color codes all your React components based on the render time, allowing you to pinpoint exactly which components are
+                  React Pinpoint color codes all your React components based on their render time, allowing you to pinpoint exactly which components are
                   unperformant.
                 </p>
               </div>
@@ -332,12 +332,13 @@ export default function Home() {
             </svg>
 
             <div className="relative mt-12 sm:mt-16 lg:mt-24">
-              {/* <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
+              <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
                 <div className="lg:col-start-2">
-                  <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-3xl sm:leading-9">Always in the loop</h4>
-                  <p className="mt-3 text-lg leading-7 text-gray-500">See all your React components in a tree.</p>
+                  <h4 className="text-3xl font-bold leading-8 tracking-tight text-neutral-900 sm:text-3xl sm:leading-10">
+                    Simple And Unobtrusive
+                  </h4>
+                  <p className="mt-3 text-lg leading-7 text-gray-500">Add just a few lines of code to start capturing performance in real-time. React Pinpoint is highly performant and should not cause performance issues within your existing app.</p>
                 </div>
-
                 <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
                   <svg
                     className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
@@ -353,9 +354,9 @@ export default function Home() {
                     </defs>
                     <rect width="784" height="404" fill="url(#svg-pattern-squares-4)" />
                   </svg>
-                  <img className="relative mx-auto" width="490" src="/img/features/feature-example-2.png" alt="" />
+                  <img className="relative mx-auto" width="700" src="/codesnippet.png" alt="Code Snippet of React Pinpoint" />
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
