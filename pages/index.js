@@ -339,7 +339,7 @@ export default function Home() {
             <div className="relative mt-12 sm:mt-16 lg:mt-24">
               <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
                 <div className="lg:col-start-2">
-                  <h4 className="text-3xl font-bold leading-8 tracking-tight text-neutral-900 sm:text-3xl sm:leading-10">Simple And Unobtrusive</h4>
+                  <h4 className="text-3xl font-bold leading-8 tracking-tight text-neutral-900 sm:text-3xl sm:leading-10">Simple and Unobtrusive</h4>
                   <p className="mt-3 text-lg leading-7 text-neutral-700">
                     Add just a few lines of code to start capturing performance in real-time. React Pinpoint is highly performant and should not cause
                     performance issues within your existing app.
