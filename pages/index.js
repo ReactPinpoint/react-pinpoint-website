@@ -292,8 +292,8 @@ export default function Home() {
                   Your Components, Visualized
                 </h4>
                 <p className="mt-3 text-lg leading-7 text-neutral-700">
-                  React Pinpoint color codes all your React components based on their render time, allowing you to pinpoint exactly which components are
-                  unperformant.
+                  React Pinpoint color codes all your React components based on their render time, allowing you to pinpoint exactly which components
+                  are unperformant.
                 </p>
               </div>
 
@@ -312,7 +312,12 @@ export default function Home() {
                   </defs>
                   <rect width="784" height="404" fill="url(#svg-pattern-squares-2)" />
                 </svg>
-                <img className="relative mx-auto" width="490" src="/bigtree-framed.png" alt="Tree of React Components" />
+                <img
+                  className="relative mx-auto pointer-events-none select-none"
+                  width="490"
+                  src="/bigtree-framed.png"
+                  alt="Tree of React Components"
+                />
               </div>
             </div>
 
@@ -334,10 +339,11 @@ export default function Home() {
             <div className="relative mt-12 sm:mt-16 lg:mt-24">
               <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
                 <div className="lg:col-start-2">
-                  <h4 className="text-3xl font-bold leading-8 tracking-tight text-neutral-900 sm:text-3xl sm:leading-10">
-                    Simple And Unobtrusive
-                  </h4>
-                  <p className="mt-3 text-lg leading-7 text-gray-500">Add just a few lines of code to start capturing performance in real-time. React Pinpoint is highly performant and should not cause performance issues within your existing app.</p>
+                  <h4 className="text-3xl font-bold leading-8 tracking-tight text-neutral-900 sm:text-3xl sm:leading-10">Simple And Unobtrusive</h4>
+                  <p className="mt-3 text-lg leading-7 text-neutral-700">
+                    Add just a few lines of code to start capturing performance in real-time. React Pinpoint is highly performant and should not cause
+                    performance issues within your existing app.
+                  </p>
                 </div>
                 <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
                   <svg
@@ -354,7 +360,12 @@ export default function Home() {
                     </defs>
                     <rect width="784" height="404" fill="url(#svg-pattern-squares-4)" />
                   </svg>
-                  <img className="relative mx-auto" width="700" src="/codesnippet.png" alt="Code Snippet of React Pinpoint" />
+                  <img
+                    className="relative mx-auto pointer-events-none select-none"
+                    width="700"
+                    src="/codesnippet.png"
+                    alt="Code Snippet of React Pinpoint"
+                  />
                 </div>
               </div>
             </div>
