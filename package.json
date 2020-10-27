@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.6.2",
-    "next": "^9.5.4",
+    "next": "^10.0.0",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-d3-tree": "^1.16.1",
